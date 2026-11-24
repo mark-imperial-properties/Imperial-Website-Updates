@@ -1,0 +1,3223 @@
+/* ═══════════════════════════════════════════════════════════
+        IMPERIAL PROPERTIES — Design System v3
+
+        TYPE SCALE (8 steps):
+          xs    .68rem   — micro: legal, dates, social meta
+          sm    .78rem   — small: tags, secondary nav, captions
+          base  .90rem   — body: descriptions, office detail
+          md    1.00rem  — body+: blog excerpt, standard p
+          lg    1.15rem  — elevated: card titles, review text
+          xl    1.45rem  — prices
+          2xl   clamp(1.9rem,3.8vw,2.9rem) — h2
+          3xl   clamp(2.6rem,5.5vw,4.2rem) — h1
+
+        LETTER SPACING (3 values):
+          tight  -.01em  — serif headings
+          normal  .06em  — sans UI, buttons
+          wide    .18em  — eyebrows, uppercase labels
+
+        FACES:
+          --serif  Cormorant Garamond 400/500 — headings, prices, pull quotes
+          --sans   DM Sans 300/400/500        — body, lead text
+          --label  Inter 400/500              — eyebrows, buttons, nav, tags
+        ═══════════════════════════════════════════════════════════ */
+
+             :root {
+                 /* Palette */
+                 --dark: #1A1815;
+                 --dark2: #2B2724;
+                 --gold: #C9A96E;
+                 --gold2: #B8935A;
+                 --cream: #FAF8F5;
+                 --warm: #EDE8DF;
+                 --muted: #8A8378;
+                 --sub: #5C564E;
+                 --border: #DDD6CC;
+                 /* Faces */
+                 --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+                 --sans: 'DM Sans', system-ui, sans-serif;
+                 --label: 'Inter', system-ui, sans-serif;
+                 /* Scale */
+                 --t-xs: .68rem;
+                 --t-sm: .78rem;
+                 --t-base: .90rem;
+                 --t-md: 1rem;
+                 --t-lg: 1.15rem;
+                 --t-xl: 1.45rem;
+                 --t-2xl: clamp(1.9rem, 3.8vw, 2.9rem);
+                 --t-3xl: clamp(2.6rem, 5.5vw, 4.2rem);
+                 /* Letter spacing */
+                 --ls-tight: -.01em;
+                 --ls-normal: .06em;
+                 --ls-wide: .18em;
+                 --aimee-top: 92px;
+                 --aimee-top-mobile: 85px;  /* mobile offset — usually much smaller */
+             }
+
+             *, *::before, *::after {
+                 box-sizing: border-box;
+             }
+
+             html {
+                 scroll-behavior: smooth;
+             }
+
+             body {
+                 font-family: var(--sans);
+                 font-size: var(--t-md);
+                 line-height: 1.7;
+                 color: var(--dark2);
+                 background: var(--cream);
+                 -webkit-font-smoothing: antialiased;
+             }
+
+             img {
+                 display: block;
+                 max-width: 100%;
+             }
+
+             a {
+                 color: inherit;
+             }
+
+             /* ── Base headings — serif, tight tracking, 500 weight ── */
+             h1, h2, h3, h4 {
+                 font-family: var(--serif);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 line-height: 1.08;
+                 margin: 0;
+             }
+
+             h1 {
+                 font-size: var(--t-3xl);
+             }
+
+             h2 {
+                 font-size: var(--t-2xl);
+             }
+
+             h3 {
+                 font-size: 1.5rem;
+             }
+             /* one-off: office names */
+             h4 {
+                 font-size: var(--t-lg);
+             }
+             /* one-off: sell service titles */
+
+             /* ── Eyebrow — label face, wide tracking, uppercase ── */
+             .wsEyebrow {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--muted);
+                 display: block;
+                 margin-bottom: .875rem;
+             }
+
+             .wsEyebrowGold {
+                 color: var(--gold);
+             }
+
+             .wsEyebrowLight {
+                 color: rgba(250,248,245,.38);
+             }
+
+             /* ── Body text — sans, base size ── */
+             p {
+                 font-family: var(--sans);
+                 font-size: var(--t-base);
+                 line-height: 1.75;
+                 color: var(--sub);
+                 margin: 0;
+             }
+
+                 p + p {
+                     margin-top: .875rem;
+                 }
+
+             /* ── Utilities ──────────────────────────────────────── */
+             .wsContainer {
+                 width: 100%;
+                 max-width: 1160px;
+                 margin: 0 auto;
+                 padding: 0 1.5rem;
+             }
+
+             /* ── Buttons — label face, normal tracking, uppercase ── */
+             .wsBtnIp {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-normal);
+                 text-transform: uppercase;
+                 border-radius: 60px;
+                 padding: .78rem 1.85rem;
+                 border: 1px solid transparent;
+                 transition: all .18s;
+                 white-space: nowrap;
+                 text-decoration: none;
+                 display: inline-flex;
+                 align-items: center;
+             }
+
+                 .wsBtnIp:hover {
+                     transform: translateY(-1px);
+                 }
+
+             .wsBtnIpDark {
+                 background: var(--dark);
+                 color: var(--cream);
+                 border-color: var(--dark);
+             }
+
+                 .wsBtnIpDark:hover {
+                     background: var(--dark2);
+                     color: var(--cream);
+                 }
+
+             .wsBtnIpGold {
+                 background: var(--gold);
+                 color: var(--dark);
+                 border-color: var(--gold);
+             }
+
+                 .wsBtnIpGold:hover {
+                     background: var(--gold2);
+                     color: var(--dark);
+                 }
+
+             .wsBtnIpOutlineLight {
+                 background: transparent;
+                 color: var(--cream);
+                 border-color: rgba(250,248,245,.45);
+             }
+
+                 .wsBtnIpOutlineLight:hover {
+                     background: var(--cream);
+                     color: var(--dark);
+                     border-color: var(--cream);
+                 }
+
+             .wsBtnIpOutlineDark {
+                 background: transparent;
+                 color: var(--dark2);
+                 border-color: var(--dark2);
+             }
+
+                 .wsBtnIpOutlineDark:hover {
+                     background: var(--dark2);
+                     color: var(--cream);
+                 }
+
+             .wsBtnIpSm {
+                 font-size: var(--t-xs);
+                 padding: .58rem 1.25rem;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        HERO
+        ═══════════════════════════════════════════════════════════ */
+             .wsHero {
+                 position: relative;
+                 min-height: 90vh;
+                 display: flex;
+                 flex-direction: column;
+                 background: var(--dark);
+                 color: var(--cream);
+                 overflow: visible;
+             }
+
+             .wsHeroVideoWrap {
+                 position: absolute;
+                 inset: 0;
+                 overflow: hidden;
+                 z-index: 0;
+             }
+
+                 .wsHeroVideoWrap iframe {
+                     position: absolute;
+                     top: 50%;
+                     left: 50%;
+                     width: 177.78vh;
+                     height: 56.25vw;
+                     min-width: 100%;
+                     min-height: 100%;
+                     transform: translate(-50%,-50%);
+                     pointer-events: none;
+                 }
+
+                 .wsHeroVideoWrap .wsHeroVideoPoster {
+                     position: absolute;
+                     inset: 0;
+                     width: 100%;
+                     height: 100%;
+                     object-fit: cover;
+                     transition: opacity .8s ease;
+                 }
+
+             .wsHeroOverlay {
+                 position: absolute;
+                 inset: 0;
+                 z-index: 1;
+                 pointer-events: none;
+                 background: linear-gradient(165deg, rgba(26,24,21,.06) 0%, rgba(26,24,21,.5) 55%, rgba(26,24,21,.88) 100%);
+             }
+
+             .wsHeroInner {
+                 position: relative;
+                 z-index: 2;
+                 flex: 1;
+                 display: flex;
+                 flex-direction: column;
+             }
+
+             .wsHeroContent {
+                 flex: 1;
+                 display: flex;
+                 align-items: center;
+                 padding: 5rem 0 2.5rem;
+             }
+
+             .wsHero h1 {
+                 color: var(--cream);
+                 margin-bottom: 1.25rem;
+             }
+
+                 .wsHero h1 em {
+                     color: var(--gold);
+                     font-style: italic;
+                 }
+
+             /* Hero lead — sans light, slightly larger than body ── */
+             .wsHeroLead {
+                 font-family: var(--sans);
+                 font-weight: 300;
+                 font-size: clamp(.93rem, 1.6vw, 1.05rem); /* between base and md */
+                 letter-spacing: var(--ls-tight);
+                 color: rgba(250,248,245,.72);
+                 max-width: 480px;
+                 line-height: 1.8;
+                 margin-bottom: 2rem;
+             }
+
+             .wsMuteBtn {
+                 position: absolute;
+                 z-index: 3;
+                 top: 1.25rem;
+                 right: 1.25rem;
+                 background: rgba(250,248,245,.1);
+                 border: 1px solid rgba(250,248,245,.3);
+                 color: var(--cream);
+                 border-radius: 50%;
+                 width: 2.4rem;
+                 height: 2.4rem;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 font-size: .85rem;
+                 backdrop-filter: blur(6px);
+                 cursor: pointer;
+                 transition: background .15s;
+             }
+
+                 .wsMuteBtn:hover {
+                     background: rgba(250,248,245,.2);
+                 }
+
+             /* ── Aimée pill ── */
+             .wsHeroAimeeZone {
+                 position: relative;
+                 z-index: 3;
+                 display: flex;
+                 justify-content: center;
+                 padding: 0 1.5rem 3.5rem;
+             }
+
+             #aimee-sticky-wrap {
+                 width: 100%;
+                 max-width: 660px;
+                 position: relative;
+             }
+
+                 #aimee-sticky-wrap.stuck {
+                     position: fixed;
+                     top: 68px;
+                     left: 50%;
+                     transform: translateX(-50%);
+                     z-index: 1020;
+                     width: calc(100% - 3rem);
+                     max-width: 660px;
+                     padding: 6px 0;
+                 }
+
+             .aimee-pill {
+                 display: flex;
+                 align-items: center;
+                 background: rgba(26,24,21,.72);
+                 backdrop-filter: blur(20px);
+                 -webkit-backdrop-filter: blur(20px);
+                 border: 1px solid rgba(201,169,110,.42);
+                 border-radius: 60px;
+                 padding: 5px 5px 5px 22px;
+                 box-shadow: 0 8px 32px rgba(0,0,0,.3);
+                 transition: border-color .2s, background .2s;
+             }
+
+                 .aimee-pill:focus-within {
+                     border-color: rgba(201,169,110,.85);
+                     background: rgba(26,24,21,.9);
+                 }
+
+             #aimee-sticky-wrap.stuck .aimee-pill {
+                 background: rgba(26,24,21,.97);
+                 box-shadow: 0 4px 20px rgba(0,0,0,.45);
+             }
+
+             /* Pill label — label face, wide tracking ── */
+             .aimee-pill-label {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--gold);
+                 white-space: nowrap;
+                 padding-right: 14px;
+                 border-right: 1px solid rgba(201,169,110,.28);
+                 flex-shrink: 0;
+             }
+
+             /* Pill input — serif italic (inviting, editorial) ── */
+             .aimee-pill input {
+                 flex: 1;
+                 background: transparent;
+                 border: none;
+                 outline: none;
+                 color: var(--cream);
+                 font-family: var(--serif);
+                 font-size: var(--t-lg); /* lg: slightly elevated, feels premium */
+                 font-style: italic;
+                 font-weight: 400;
+                 padding: 10px 14px;
+                 min-width: 0;
+             }
+
+                 .aimee-pill input::placeholder {
+                     color: rgba(250,248,245,.4);
+                 }
+
+             .aimee-pill-btn {
+                 width: 40px;
+                 height: 40px;
+                 border-radius: 50%;
+                 background: var(--gold);
+                 border: none;
+                 cursor: pointer;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 flex-shrink: 0;
+                 transition: background .15s;
+                 opacity: .38;
+             }
+
+                 .aimee-pill-btn:not(:disabled) {
+                     opacity: 1;
+                 }
+
+                 .aimee-pill-btn svg {
+                     width: 13px;
+                     height: 13px;
+                     fill: var(--dark);
+                 }
+
+             /* ═══════════════════════════════════════════════════════════
+        TICKER — label xs, wide tracking
+        ═══════════════════════════════════════════════════════════ */
+             .wsTicker {
+                 background: var(--dark);
+                 border-top: 1px solid rgba(201,169,110,.18);
+                 border-bottom: 1px solid rgba(201,169,110,.18);
+                 padding: .72rem 0;
+                 overflow: hidden;
+             }
+
+             .wsTickerTrack {
+                 display: flex;
+                 width: max-content;
+                 animation: ticker 42s linear infinite;
+             }
+
+                 .wsTickerTrack:hover {
+                     animation-play-state: paused;
+                 }
+
+             .wsTickerItem {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: rgba(250,248,245,.32);
+                 padding: 0 2.25rem;
+                 white-space: nowrap;
+                 display: flex;
+                 align-items: center;
+                 gap: 1.5rem;
+             }
+
+             .wsTickerSep {
+                 color: var(--gold);
+                 font-size: .4rem;
+             }
+
+             .wsTickerItem.wsHi {
+                 color: var(--gold);
+             }
+
+             @keyframes ticker {
+                 from {
+                     transform: translateX(0)
+                 }
+
+                 to {
+                     transform: translateX(-50%)
+                 }
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        STAT STRIP — serif xl for numbers, label xs for labels
+        ═══════════════════════════════════════════════════════════ */
+             .wsStatStrip {
+                 border-bottom: 1px solid var(--border);
+                 padding: 2.5rem 0;
+             }
+
+             .wsStatNum {
+                 font-family: var(--serif);
+                 font-size: clamp(2rem, 4vw, 3rem);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: var(--dark);
+                 line-height: 1;
+                 margin-bottom: .2rem;
+             }
+
+                 .wsStatNum em {
+                     font-style: italic;
+                     color: var(--gold);
+                 }
+
+             .wsStatLabel {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--muted);
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        SECTIONS
+        ═══════════════════════════════════════════════════════════ */
+             .wsIpSection {
+                 padding: 5.5rem 0;
+             }
+
+             .wsIpSectionDark {
+                 background: var(--dark);
+             }
+
+                 .wsIpSectionDark h2 {
+                     color: var(--cream);
+                 }
+
+                 .wsIpSectionDark p {
+                     color: rgba(250,248,245,.5);
+                 }
+
+             .wsSectionHead {
+                 display: flex;
+                 justify-content: space-between;
+                 align-items: flex-end;
+                 gap: 1rem;
+                 margin-bottom: 3rem;
+             }
+
+                 .wsSectionHead > .wsEyebrow {
+                     margin-bottom: 0;
+                 }
+
+                 .wsSectionHead > .wsBtnIp {
+                     flex-shrink: 0;
+                 }
+
+             /* ═══════════════════════════════════════════════════════════
+        PROPERTY CARDS
+        serif for title and price; label for location and tags
+        ═══════════════════════════════════════════════════════════ */
+             .wsPropCard {
+                 display: flex;
+                 flex-direction: column;
+                 background: var(--cream);
+                 border: 1px solid var(--border);
+                 text-decoration: none;
+                 color: var(--dark2);
+                 transition: border-color .15s, transform .2s;
+                 height: 100%;
+             }
+
+                 .wsPropCard:hover {
+                     border-color: var(--gold);
+                     transform: translateY(-3px);
+                     color: var(--dark2);
+                 }
+
+             .wsPropCardImgWrap {
+                 aspect-ratio: 4/3;
+                 overflow: hidden;
+                 position: relative;
+                 background: var(--warm);
+             }
+
+                 .wsPropCardImgWrap img {
+                     width: 100%;
+                     height: 100%;
+                     object-fit: cover;
+                     transition: transform .35s;
+                 }
+
+             .wsPropCard:hover .wsPropCardImgWrap img {
+                 transform: scale(1.04);
+             }
+
+             /* Badge — label xs, wide tracking ── */
+             .wsPropCardBadge {
+                 position: absolute;
+                 bottom: 0;
+                 left: 0;
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 background: var(--dark);
+                 color: var(--gold);
+                 padding: 4px 10px;
+             }
+
+             .wsPropCardBody {
+                 padding: 1.25rem;
+                 flex: 1;
+                 display: flex;
+                 flex-direction: column;
+             }
+
+             /* Location — label xs ── */
+             .wsPropCardLoc {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-normal);
+                 text-transform: uppercase;
+                 color: var(--muted);
+                 margin-bottom: .4rem;
+             }
+
+             /* Title — serif lg ── */
+             .wsPropCardTitle {
+                 font-family: var(--serif);
+                 font-size: var(--t-lg);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 line-height: 1.25;
+                 margin-bottom: .75rem;
+                 flex: 1;
+             }
+
+             /* Tags — label xs ── */
+             .wsPropCardTags {
+                 display: flex;
+                 flex-wrap: wrap;
+                 gap: 4px;
+                 margin-bottom: .875rem;
+             }
+
+             .wsPropTag {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 border: 1px solid var(--border);
+                 border-radius: 20px;
+                 padding: 2px 8px;
+                 color: var(--muted);
+             }
+
+             /* Price — serif xl ── */
+             .wsPropCardPrice {
+                 font-family: var(--serif);
+                 font-size: var(--t-xl);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: var(--dark);
+                 margin-top: auto;
+             }
+
+             /* CTA — label xs, gold ── */
+             .wsPropCardCta {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-normal);
+                 text-transform: uppercase;
+                 color: var(--gold);
+                 margin-top: .35rem;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        WHY IMPERIAL
+        points use ruled lines, not icons — no face mixing in headers
+        ═══════════════════════════════════════════════════════════ */
+             .wsWhyPoint {
+                 padding: 1.4rem 0;
+                 border-bottom: 1px solid var(--border);
+             }
+
+                 .wsWhyPoint:first-child {
+                     border-top: 1px solid var(--border);
+                 }
+
+             /* Point title — serif lg (consistent with card titles) ── */
+             .wsWhyPointTitle {
+                 font-family: var(--serif);
+                 font-size: var(--t-lg);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: var(--dark2);
+                 margin-bottom: .35rem;
+             }
+
+             /* Point body — sans base ── */
+             .wsWhyPointDesc {
+                 font-family: var(--sans);
+                 font-size: var(--t-base);
+                 color: var(--sub);
+                 margin: 0;
+                 line-height: 1.75;
+             }
+
+             .wsWhyImgWrap {
+                 position: relative;
+             }
+
+                 .wsWhyImgWrap img {
+                     width: 100%;
+                     aspect-ratio: 3/4;
+                     object-fit: cover;
+                 }
+
+             .wsWhyPull {
+                 position: absolute;
+                 bottom: 0;
+                 left: 0;
+                 right: 0;
+                 background: var(--dark);
+                 padding: 1.5rem;
+             }
+
+             /* Pull quote — serif italic lg ── */
+             .wsWhyPullText {
+                 font-family: var(--serif);
+                 font-size: var(--t-lg);
+                 font-style: italic;
+                 font-weight: 400;
+                 letter-spacing: var(--ls-tight);
+                 color: rgba(250,248,245,.8);
+                 line-height: 1.55;
+                 margin: 0;
+             }
+
+
+
+             /* Cite — label xs ── */
+             .wsWhyPullCite {
+                 display: block;
+                 margin-top: .625rem;
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--gold);
+                 font-style: normal;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        AREAS — serif for names, sans for descriptions
+        ═══════════════════════════════════════════════════════════ */
+             .wsAreasGrid {
+                 display: grid;
+                 grid-template-columns: repeat(4,1fr);
+                 gap: 1px;
+                 background: var(--border);
+             }
+
+             .wsAreaCard {
+                 background: var(--cream);
+                 padding: 1.75rem 1.5rem;
+                 position: relative;
+                 cursor: pointer;
+                 transition: background .2s;
+             }
+
+                 .wsAreaCard:hover {
+                     background: var(--dark);
+                 }
+
+                     .wsAreaCard:hover .wsAreaName,
+                     .wsAreaCard:hover .wsAreaArrow {
+                         color: var(--cream);
+                     }
+
+                     .wsAreaCard:hover .wsAreaDesc {
+                         color: rgba(250,248,245,.5);
+                     }
+
+             /* Area name — serif, same as h3 territory ── */
+             .wsAreaName {
+                 font-family: var(--serif);
+                 font-size: 1.3rem;
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 margin-bottom: .4rem;
+                 transition: color .2s;
+             }
+
+             /* Area desc — sans base ── */
+             .wsAreaDesc {
+                 font-family: var(--sans);
+                 font-size: var(--t-base);
+                 color: var(--muted);
+                 line-height: 1.6;
+                 margin: 0;
+                 transition: color .2s;
+             }
+
+             .wsAreaArrow {
+                 position: absolute;
+                 top: 1.5rem;
+                 right: 1.5rem;
+                 color: var(--border);
+                 font-size: 1rem;
+                 transition: color .2s;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        SELL WITH US
+        service numbers in serif (large, faded); titles in serif lg
+        ═══════════════════════════════════════════════════════════ */
+             .wsSellServiceGrid {
+                 display: grid;
+                 grid-template-columns: 1fr 1fr;
+                 gap: 1px;
+                 background: rgba(250,248,245,.06);
+                 margin-top: 2.5rem;
+             }
+
+             .wsSellService {
+                 background: var(--dark);
+                 padding: 1.5rem;
+             }
+
+             /* Number — serif, large, decorative ── */
+             .wsSellServiceNum {
+                 font-family: var(--serif);
+                 font-size: 2.4rem;
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: rgba(250,248,245,.08);
+                 line-height: 1;
+                 margin-bottom: .75rem;
+                 display: block;
+             }
+
+             /* Service title — serif lg (consistent hierarchy) ── */
+             .wsSellServiceTitle {
+                 font-family: var(--serif);
+                 font-size: var(--t-lg);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: var(--cream);
+                 margin-bottom: .4rem;
+             }
+
+             /* Service body — sans base ── */
+             .wsSellServiceDesc {
+                 font-family: var(--sans);
+                 font-size: var(--t-base);
+                 color: rgba(250,248,245,.45);
+                 margin: 0;
+                 line-height: 1.7;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        REVIEWS
+        stars and meta in label; review text in serif italic
+        ═══════════════════════════════════════════════════════════ */
+             .wsGoogleBadge {
+                 display: inline-flex;
+                 align-items: center;
+                 gap: 1rem;
+                 border: 1px solid var(--border);
+                 padding: .875rem 1.25rem;
+             }
+
+             .wsGoogleBadgeScore {
+                 font-family: var(--serif);
+                 font-size: 2.4rem;
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: var(--dark);
+                 line-height: 1;
+             }
+
+             .wsGoogleBadgeStars {
+                 color: #FBBC04;
+                 letter-spacing: var(--ls-normal);
+                 font-size: .9rem;
+             }
+
+             .wsGoogleBadgeLabel {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: var(--muted);
+                 letter-spacing: var(--ls-normal);
+                 margin-top: 2px;
+             }
+
+             .wsReviewCard {
+                 background: var(--cream);
+                 border: 1px solid var(--border);
+                 padding: 2rem;
+                 height: 100%;
+                 display: flex;
+                 flex-direction: column;
+                 gap: 1.25rem;
+             }
+
+             .wsReviewStars {
+                 color: #FBBC04;
+                 letter-spacing: var(--ls-normal);
+                 font-size: .9rem;
+             }
+
+             /* Review text — serif italic lg ── */
+             .wsReviewText {
+                 font-family: var(--serif);
+                 font-size: var(--t-lg);
+                 font-style: italic;
+                 font-weight: 400;
+                 letter-spacing: var(--ls-tight);
+                 line-height: 1.55;
+                 color: var(--dark);
+                 flex: 1;
+             }
+
+
+
+             /* Reviewer name — label sm ── */
+             .wsReviewName {
+                 font-family: var(--label);
+                 font-size: var(--t-sm);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-normal);
+                 text-transform: uppercase;
+                 color: var(--dark2);
+             }
+
+             /* Reviewer detail — label xs ── */
+             .wsReviewDetail {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: var(--muted);
+                 margin-top: 2px;
+             }
+
+             .wsWidgetPlaceholder {
+                 margin-top: 1.5rem;
+                 padding: 1rem 1.25rem;
+                 border: 1px dashed var(--border);
+                 background: var(--warm);
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: var(--muted);
+                 letter-spacing: var(--ls-normal);
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        INSTAGRAM — label xs for handle/meta
+        ═══════════════════════════════════════════════════════════ */
+             .wsInstaGrid {
+                 display: grid;
+                 grid-template-columns: repeat(6,1fr);
+                 gap: 3px;
+             }
+
+             .wsInstaTile {
+                 aspect-ratio: 1/1;
+                 overflow: hidden;
+                 position: relative;
+                 background: var(--warm);
+             }
+
+                 .wsInstaTile img {
+                     width: 100%;
+                     height: 100%;
+                     object-fit: cover;
+                     transition: transform .35s;
+                     display: block;
+                 }
+
+                 .wsInstaTile:hover img {
+                     transform: scale(1.07);
+                 }
+
+             .wsInstaOverlay {
+                 position: absolute;
+                 inset: 0;
+                 background: rgba(26,24,21,.5);
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 opacity: 0;
+                 transition: opacity .2s;
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--cream);
+             }
+
+             .wsInstaTile:hover .wsInstaOverlay {
+                 opacity: 1;
+             }
+
+             .wsInstaHandleLink {
+                 display: inline-flex;
+                 align-items: center;
+                 gap: .625rem;
+                 font-family: var(--label);
+                 font-size: var(--t-sm);
+                 font-weight: 500;
+                 text-decoration: none;
+                 color: var(--dark2);
+                 transition: color .15s;
+             }
+
+                 .wsInstaHandleLink:hover {
+                     color: var(--gold);
+                 }
+
+             .wsInstaMeta {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: var(--muted);
+                 margin-top: 2px;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        BLOG — serif for titles; label for cats and dates
+        ═══════════════════════════════════════════════════════════ */
+             .wsBlogCard {
+                 text-decoration: none;
+                 color: var(--dark2);
+                 display: block;
+             }
+
+                 .wsBlogCard:hover .wsBlogTitle {
+                     color: var(--gold);
+                 }
+
+             .wsBlogImgWrap {
+                 aspect-ratio: 16/9;
+                 overflow: hidden;
+                 background: var(--warm);
+                 margin-bottom: 1rem;
+             }
+
+                 .wsBlogImgWrap img {
+                     width: 100%;
+                     height: 100%;
+                     object-fit: cover;
+                     transition: transform .3s;
+                     display: block;
+                 }
+
+             .wsBlogCard:hover .wsBlogImgWrap img {
+                 transform: scale(1.04);
+             }
+
+             /* Category — label xs, wide tracking, gold ── */
+             .wsBlogCat {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--gold);
+                 margin-bottom: .4rem;
+             }
+
+             /* Blog title — serif, between lg and xl ── */
+             .wsBlogTitle {
+                 font-family: var(--serif);
+                 font-size: 1.2rem;
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 line-height: 1.25;
+                 margin-bottom: .5rem;
+                 transition: color .15s;
+             }
+
+             /* Excerpt — sans base ── */
+             .wsBlogExcerpt {
+                 font-family: var(--sans);
+                 font-size: var(--t-base);
+                 color: var(--muted);
+                 line-height: 1.7;
+                 margin-bottom: .5rem;
+             }
+
+             /* Date — label xs ── */
+             .wsBlogDate {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: var(--muted);
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        CONTACT
+        office name in serif h3; type label in label xs; detail in sans base
+        ═══════════════════════════════════════════════════════════ */
+             .wsOfficeBlock {
+                 padding: 2.5rem;
+                 background: rgba(250,248,245,.03);
+                 border: 1px solid rgba(250,248,245,.07);
+                 height: 100%;
+             }
+                 /* h3 already handles office name via global rule */
+                 .wsOfficeBlock h3 {
+                     color: var(--cream);
+                     margin-bottom: .3rem;
+                 }
+
+             .wsOfficeType {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--gold);
+                 display: block;
+                 margin-bottom: 1.5rem;
+             }
+
+             .wsOfficeDetail {
+                 font-family: var(--sans);
+                 font-size: var(--t-base);
+                 color: rgba(250,248,245,.5);
+                 line-height: 2.1;
+             }
+
+                 .wsOfficeDetail a {
+                     color: rgba(250,248,245,.5);
+                     text-decoration: none;
+                     transition: color .15s;
+                 }
+
+                     .wsOfficeDetail a:hover {
+                         color: var(--gold);
+                     }
+
+             .wsLangsRow {
+                 display: flex;
+                 flex-wrap: wrap;
+                 gap: .5rem;
+                 margin-top: 1.5rem;
+                 padding-top: 1.25rem;
+                 border-top: 1px solid rgba(250,248,245,.07);
+             }
+
+             .wsLangChip {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: rgba(250,248,245,.35);
+             }
+
+                 .wsLangChip::after {
+                     content: '·';
+                     margin-left: .5rem;
+                 }
+
+                 .wsLangChip:last-child::after {
+                     display: none;
+                 }
+
+             .wsOfficeHours {
+                 font-family: var(--sans);
+                 font-size: var(--t-sm);
+                 color: rgba(250,248,245,.3);
+                 line-height: 1.9;
+                 margin: 0;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        FOOTER — label xs throughout
+        ═══════════════════════════════════════════════════════════ */
+             .wsSiteFooter {
+                 background: var(--dark);
+                 border-top: 1px solid rgba(250,248,245,.06);
+                 padding: 2.25rem 0 1.75rem;
+             }
+
+             .wsFooterLogo img {
+                 height: 38px;
+                 width: auto;
+                 opacity: .6;
+             }
+
+             .wsFooterLink {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-normal);
+                 text-transform: uppercase;
+                 color: rgba(250,248,245,.28);
+                 text-decoration: none;
+                 transition: color .15s;
+             }
+
+                 .wsFooterLink:hover {
+                     color: var(--gold);
+                 }
+
+             .wsFooterCopy {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: rgba(250,248,245,.2);
+             }
+
+             .wsSocialBtn {
+                 width: 32px;
+                 height: 32px;
+                 border-radius: 50%;
+                 border: 1px solid rgba(250,248,245,.14);
+                 display: inline-flex;
+                 align-items: center;
+                 justify-content: center;
+                 color: rgba(250,248,245,.32);
+                 text-decoration: none;
+                 font-size: .78rem;
+                 transition: all .15s;
+             }
+
+                 .wsSocialBtn:hover {
+                     border-color: var(--gold);
+                     color: var(--gold);
+                 }
+
+             /* ═══════════════════════════════════════════════════════════
+        RESPONSIVE
+        ═══════════════════════════════════════════════════════════ */
+             @media (max-width: 991.98px) {
+                 .wsAreasGrid {
+                     grid-template-columns: repeat(2,1fr);
+                 }
+
+                 .wsInstaGrid {
+                     grid-template-columns: repeat(3,1fr);
+                 }
+             }
+
+             @media (max-width: 767.98px) {
+                 .wsIpSection {
+                     padding: 3.5rem 0;
+                 }
+
+                 .wsHeroContent {
+                     padding: 3.5rem 0 2rem;
+                 }
+
+                 .wsHeroAimeeZone {
+                     padding: 0 1rem 2.5rem;
+                 }
+
+                 .aimee-pill-label {
+                     display: none;
+                 }
+
+                 #aimee-sticky-wrap.stuck {
+                     width: calc(100% - 2rem);
+                     top: 62px;
+                 }
+
+                 .wsSellServiceGrid {
+                     grid-template-columns: 1fr;
+                 }
+             }
+
+             @media (max-width: 575.98px) {
+                 .wsAreasGrid {
+                     grid-template-columns: 1fr 1fr;
+                 }
+
+                 .wsInstaGrid {
+                     grid-template-columns: repeat(2,1fr);
+                 }
+             }
+
+             /* Reduced motion: stop large motion only (the ticker, smooth scrolling); small effects such as fades,
+                hover lifts and the pulsing selection heart stay. The filter sheet and caret have their own rules below. */
+             @media (prefers-reduced-motion: reduce) {
+                 html,
+                 .wsAreaListings .rwPropertySearchResultsItems {
+                     scroll-behavior: auto;
+                 }
+
+                 .wsTickerTrack {
+                     animation: none;
+                 }
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        MEET THE FAMILY
+        serif names; label roles; sans bios
+        ═══════════════════════════════════════════════════════════ */
+             .family-card {
+                 display: flex;
+                 flex-direction: column;
+                 border: 1px solid var(--border);
+                 height: 100%;
+                 transition: border-color .2s;
+             }
+
+                 .family-card:hover {
+                     border-color: var(--gold);
+                 }
+
+             .family-card-img {
+                 aspect-ratio: 4/3;
+                 overflow: hidden;
+                 background: var(--warm);
+                 position: relative;
+             }
+
+                 .family-card-img img {
+                     width: 100%;
+                     height: 100%;
+                     object-fit: cover;
+                     object-position: top center;
+                     transition: transform .35s;
+                     display: block;
+                 }
+
+             .family-card:hover .family-card-img img {
+                 transform: scale(1.03);
+             }
+
+             .family-img-placeholder {
+                 width: 100%;
+                 height: 100%;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 font-family: var(--serif);
+                 font-size: 3rem;
+                 color: var(--border);
+             }
+
+             /* Placeholder colour variations for missing photos */
+
+
+
+
+
+
+             .family-card-body {
+                 padding: 1.5rem;
+                 flex: 1;
+                 display: flex;
+                 flex-direction: column;
+             }
+
+             /* Name — serif lg ── */
+             .family-card-name {
+                 font-family: var(--serif);
+                 font-size: var(--t-lg);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: var(--dark2);
+                 margin-bottom: .2rem;
+             }
+
+             /* Role — label xs, wide tracking ── */
+             .family-card-role {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--gold);
+                 margin-bottom: .875rem;
+             }
+
+             /* Bio — sans base ── */
+             .family-card-bio {
+                 font-family: var(--sans);
+                 font-size: var(--t-base);
+                 color: var(--sub);
+                 line-height: 1.75;
+                 margin: 0;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        LAYOUT
+        page containers and grids
+        ═══════════════════════════════════════════════════════════ */
+             .wsContainerWide {
+                 width: 100%;
+                 max-width: 1800px;
+                 margin: 0 auto;
+                 padding: 0 1.5rem;
+             }
+
+             .wsContainerWideSpaced {
+                 margin-bottom: 1.5rem;
+             }
+
+             /* Home page sections line up with .container (hero, stats, blog); search pages keep the wide grid */
+             .wsIpSection > .wsContainerWide {
+                 max-width: 1160px;
+             }
+
+             /* Call-to-action band: title on the left, buttons on the right */
+             .wsCtaRow {
+                 display: flex;
+                 flex-wrap: wrap;
+                 justify-content: space-between;
+                 align-items: center;
+                 gap: 1rem;
+             }
+
+             .wsCtaActions {
+                 display: flex;
+                 flex-wrap: wrap;
+                 gap: 1rem;
+             }
+
+             .wsIpSectionLead {
+                 padding: 4rem 0 3.5rem;
+             }
+
+             .wsIpSectionIntro {
+                 padding-bottom: 3.5rem;
+             }
+
+             /* Spinner shown while a form is being sent */
+             .wsIpSpinner {
+                 display: inline-block;
+                 width: 2rem;
+                 height: 2rem;
+                 vertical-align: -.125em;
+                 border: .25em solid currentcolor;
+                 border-right-color: transparent;
+                 border-radius: 50%;
+                 animation: ip-spinner .75s linear infinite;
+             }
+
+             @keyframes ip-spinner {
+                 to {
+                     transform: rotate(360deg);
+                 }
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        HOME
+        ═══════════════════════════════════════════════════════════ */
+             .wsHeroActions {
+                 display: flex;
+                 flex-wrap: wrap;
+                 gap: 1rem;
+             }
+
+             .wsStatGrid {
+                 display: grid;
+                 grid-template-columns: repeat(2,minmax(0,1fr));
+                 gap: 1.5rem;
+                 text-align: center;
+             }
+
+             .wsWhyLayout,
+             .wsSellLayout {
+                 display: grid;
+                 gap: 3rem;
+             }
+
+             .wsWhyLayout {
+                 align-items: center;
+             }
+
+             .wsSellLayout {
+                 align-items: start;
+             }
+
+             .wsWhyText h2,
+             .wsSellIntro h2 {
+                 margin-bottom: 1rem;
+             }
+
+             .wsWhyText figure {
+                 margin: 0 0 1rem;
+             }
+
+             .wsWhyText blockquote {
+                 margin-bottom: .25rem;
+             }
+
+             .wsWhyPoints {
+                 margin-top: 1.5rem;
+             }
+
+             .wsWhyMedia {
+                 display: none;
+             }
+
+             .wsSellIntro .wsBtnIp {
+                 margin-top: 1.5rem;
+             }
+
+             .wsAreasMore {
+                 margin-top: 1.5rem;
+                 text-align: center;
+             }
+
+             .wsAreasGrid a.wsAreaCard {
+                 display: block;
+                 text-decoration: none;
+                 color: inherit;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        CONTACT & FOOTER — layout
+        ═══════════════════════════════════════════════════════════ */
+             .wsContactTitle {
+                 margin-bottom: 3rem;
+             }
+
+             .wsOfficeGrid {
+                 display: grid;
+                 gap: 1.5rem;
+             }
+
+             .wsOfficeActions {
+                 display: flex;
+                 flex-wrap: wrap;
+                 gap: .5rem;
+                 margin-top: 1.5rem;
+             }
+
+             .wsOfficeHoursRow {
+                 padding-top: 1.5rem;
+                 margin-top: 1.25rem;
+                 border-top: 1px solid rgba(250,248,245,.07);
+             }
+
+             .wsFooterTop {
+                 display: flex;
+                 flex-wrap: wrap;
+                 justify-content: space-between;
+                 align-items: center;
+                 gap: 1rem;
+                 margin-bottom: 1.5rem;
+             }
+
+             .wsFooterLinks {
+                 display: flex;
+                 flex-wrap: wrap;
+                 gap: 1.5rem;
+             }
+
+             .wsFooterSocial {
+                 display: flex;
+                 gap: .5rem;
+             }
+
+             .wsFooterRule {
+                 border-color: rgba(250,248,245,.06);
+                 margin: 0 0 1.25rem;
+             }
+
+             .wsFooterBottom {
+                 display: flex;
+                 flex-wrap: wrap;
+                 justify-content: space-between;
+                 gap: .5rem;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        AREA & CONTENT PAGES
+        breadcrumb, page header, facts, FAQ;label face for meta
+        ═══════════════════════════════════════════════════════════ */
+             .wsBreadcrumbRow {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: var(--muted);
+                 border-bottom: 1px solid var(--border);
+                 padding: 1.1rem 0;
+             }
+
+                 .wsBreadcrumbRow ol {
+                     list-style: none;
+                     margin: 0;
+                     padding: 0;
+                     display: flex;
+                     flex-wrap: wrap;
+                     gap: .4rem;
+                 }
+
+                 .wsBreadcrumbRow li+li::before {
+                     content: "/";
+                     margin-right: .4rem;
+                 }
+
+                 .wsBreadcrumbRow a {
+                     color: var(--muted);
+                     text-decoration: none;
+                 }
+
+                 .wsBreadcrumbRow a:hover {
+                     color: var(--gold);
+                 }
+
+             .wsPageHeader {
+                 padding: 3.25rem 0 2.75rem;
+                 border-bottom: 1px solid var(--border);
+             }
+
+                 .wsPageHeader .wsIpLede {
+                     margin-top: 1.25rem;
+                 }
+
+             .wsIpSectionTight {
+                 padding: 3.5rem 0;
+             }
+
+             .wsSectionBorder {
+                 border-bottom: 1px solid var(--border);
+             }
+
+             .wsIpLede {
+                 max-width: 66ch;
+             }
+
+             .wsLinkRow {
+                 margin-top: 1.6rem;
+                 display: flex;
+                 flex-wrap: wrap;
+                 gap: .6rem;
+             }
+
+             .wsTypeChip {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-normal);
+                 text-transform: uppercase;
+                 border: 1px solid var(--border);
+                 border-radius: 60px;
+                 padding: .5rem 1.1rem;
+                 color: var(--dark2);
+                 text-decoration: none;
+                 transition: all .15s;
+             }
+
+                 .wsTypeChip:hover {
+                     background: var(--dark);
+                     color: var(--cream);
+                     border-color: var(--dark);
+                 }
+
+             .wsTextLink {
+                 display: inline-block;
+                 margin-top: 1.1rem;
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: var(--gold2);
+                 text-decoration: none;
+             }
+
+                 .wsTextLink:hover {
+                     color: var(--dark2);
+                 }
+
+             .wsViewAll {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-normal);
+                 text-transform: uppercase;
+                 color: var(--dark2);
+                 border-bottom: 1px solid var(--dark2);
+                 padding-bottom: 2px;
+                 text-decoration: none;
+             }
+
+             /* View all: beside the heading on wide screens, below the list on small ones */
+             .wsViewAllTop {
+                 display: none;
+             }
+
+             .wsViewAllBottom {
+                 display: inline-block;
+                 margin-top: 1.5rem;
+             }
+
+             /* Facts: two columns, three from 992px (facts--four: four) */
+             .facts {
+                 display: grid;
+                 grid-template-columns: repeat(2,minmax(0,1fr));
+                 column-gap: 1.5rem;
+             }
+
+             dl.facts {
+                 margin-bottom: 0;
+             }
+
+             .fact {
+                 margin-bottom: 1.75rem;
+             }
+
+             .fact-label {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--muted);
+                 margin-bottom: .3rem;
+             }
+
+             .fact-value {
+                 font-family: var(--serif);
+                 font-size: var(--t-lg);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: var(--dark2);
+                 margin: 0;
+             }
+
+             .fact-link {
+                 display: block;
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 color: var(--gold2);
+                 margin-top: .25rem;
+                 text-decoration: none;
+             }
+
+                 .fact-link:hover {
+                     color: var(--dark2);
+                 }
+
+             /* Area grid with ruled lines instead of gaps (area pages) */
+             .wsAreasGridRuled {
+                 background: none;
+                 gap: 0;
+                 border-top: 1px solid var(--border);
+                 border-left: 1px solid var(--border);
+             }
+
+                 .wsAreasGridRuled .wsAreaCard {
+                     border-right: 1px solid var(--border);
+                     border-bottom: 1px solid var(--border);
+                 }
+
+             .wsAreasGridTier2 .wsAreaCard {
+                 padding: 1.35rem 1.25rem;
+             }
+
+             .wsAreasGridTier2 .wsAreaName {
+                 font-size: 1.1rem;
+             }
+
+             .wsAreasGridTier2 .wsAreaDesc {
+                 font-size: var(--t-sm);
+             }
+
+             .wsTier3Band {
+                 background: var(--warm);
+                 padding: 3rem 0;
+             }
+
+             .wsTier3Intro {
+                 max-width: 60ch;
+                 margin-bottom: 1.75rem;
+             }
+
+                 .wsTier3Intro .wsTierLabel,
+                 .wsTier3Intro h3 {
+                     margin-bottom: .6rem;
+                 }
+
+             .wsAreasGridTier3 {
+                 grid-template-columns: repeat(2,1fr);
+                 max-width: 640px;
+             }
+
+                 .wsAreasGridTier3 .wsAreaCard {
+                     padding: 1.25rem 1.25rem;
+                 }
+
+                 .wsAreasGridTier3 .wsAreaName {
+                     font-size: 1.1rem;
+                 }
+
+                 .wsAreasGridTier3 .wsAreaDesc {
+                     font-size: var(--t-sm);
+                 }
+
+             .wsTierLabel {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--muted);
+                 margin: 0 0 1.25rem;
+             }
+
+             .faq-item {
+                 border-bottom: 1px solid var(--border);
+                 padding: 1.2rem 0;
+             }
+
+                 .faq-item:first-of-type {
+                     border-top: 1px solid var(--border);
+                 }
+
+                 .faq-item summary {
+                     font-family: var(--serif);
+                     font-size: var(--t-lg);
+                     font-weight: 500;
+                     letter-spacing: var(--ls-tight);
+                     color: var(--dark2);
+                     cursor: pointer;
+                     list-style: none;
+                     display: flex;
+                     justify-content: space-between;
+                     align-items: center;
+                 }
+
+                 .faq-item summary h3 {
+                     font: inherit;
+                     letter-spacing: inherit;
+                     color: inherit;
+                     margin: 0;
+                 }
+
+                 .faq-item summary::-webkit-details-marker {
+                     display: none;
+                 }
+
+                 .faq-item summary::after {
+                     content: '+';
+                     font-family: var(--serif);
+                     font-size: 1.4rem;
+                     color: var(--gold);
+                     margin-left: 1rem;
+                 }
+
+                 .faq-item[open] summary::after {
+                     content: '\2212';
+                 }
+
+                 .faq-item .faq-answer {
+                     margin-top: .9rem;
+                     max-width: 64ch;
+                 }
+
+             .faq-answer a {
+                 color: var(--gold2);
+             }
+
+             .wsOfficeCard address {
+                 font-style: normal;
+                 font-family: var(--sans);
+                 font-size: var(--t-base);
+                 line-height: 1.75;
+                 color: var(--sub);
+                 margin: 0;
+             }
+
+             .wsOfficeCard a {
+                 color: var(--dark2);
+             }
+
+             .wsCtaTitle {
+                 font-size: 1.9rem;
+             }
+
+             /* Property listings scrolled sideways */
+             .wsAreaListings:not(:has(.rwPropertySearchResultsItems article)) {
+                 display: none;
+             }
+
+             .wsAreaListings {
+                 position: relative;
+                 margin-top: 1.75rem;
+             }
+
+                 .wsAreaListings .rwPropertySearchResultsItems {
+                     display: flex !important;
+                     flex-wrap: nowrap !important;
+                     gap: 1.25rem;
+                     overflow-x: auto;
+                     scroll-snap-type: x mandatory;
+                     scroll-behavior: smooth;
+                     scrollbar-width: none;
+                     padding-bottom: .25rem;
+                     margin: 0 !important;
+                 }
+
+                 .wsAreaListings .rwPropertySearchResultsItems::-webkit-scrollbar {
+                     display: none;
+                 }
+
+                 .wsAreaListings .rwPropertySearchResultsItems>article {
+                     flex: 0 0 calc((100% - 2.5rem)/3) !important;
+                     max-width: none !important;
+                     width: auto !important;
+                     margin: 0 !important;
+                     padding: 0 !important;
+                     scroll-snap-align: start;
+                 }
+
+             .wsAreaListingsNav {
+                 display: flex;
+                 justify-content: flex-end;
+                 gap: .5rem;
+                 margin-top: 1rem;
+             }
+
+                 .wsAreaListingsNav button {
+                     width: 44px;
+                     height: 44px;
+                     border-radius: 50%;
+                     border: 1px solid var(--border);
+                     background: transparent;
+                     color: var(--dark2);
+                     font-size: 1.1rem;
+                     line-height: 1;
+                     cursor: pointer;
+                     transition: all .15s;
+                 }
+
+                 .wsAreaListingsNav button:hover:not(:disabled) {
+                     background: var(--dark);
+                     color: var(--cream);
+                     border-color: var(--dark);
+                 }
+
+                 .wsAreaListingsNav button:disabled {
+                     opacity: .3;
+                     cursor: default;
+                 }
+
+             /* ═══════════════════════════════════════════════════════════
+        SELL PAGE
+        ═══════════════════════════════════════════════════════════ */
+             .wsSellSteps {
+                 list-style: none;
+                 margin: 0;
+                 padding: 0;
+                 display: grid;
+                 grid-template-columns: repeat(3,minmax(0,1fr));
+                 border-top: 1px solid var(--border);
+                 border-left: 1px solid var(--border);
+             }
+
+                 .wsSellSteps li {
+                     border-right: 1px solid var(--border);
+                     border-bottom: 1px solid var(--border);
+                     padding: 1.5rem 1.4rem;
+                 }
+
+             .wsSellStepNum {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 letter-spacing: var(--ls-wide);
+                 color: var(--gold2);
+             }
+
+             .wsSellStepTitle {
+                 font-family: var(--serif);
+                 font-size: var(--t-lg);
+                 font-weight: 500;
+                 letter-spacing: var(--ls-tight);
+                 color: var(--dark2);
+                 margin: .35rem 0 .5rem;
+             }
+
+             .wsSellStepDesc {
+                 font-size: var(--t-sm);
+                 margin: 0;
+             }
+
+             .wsMkList {
+                 list-style: none;
+                 margin: 0;
+                 padding: 0;
+                 display: grid;
+                 grid-template-columns: repeat(2,minmax(0,1fr));
+                 gap: 1.4rem 2.5rem;
+             }
+
+                 .wsMkList li {
+                     padding-left: 1.4rem;
+                     position: relative;
+                 }
+
+                 .wsMkList li::before {
+                     content: "";
+                     position: absolute;
+                     left: 0;
+                     top: .65em;
+                     width: .5rem;
+                     height: .5rem;
+                     border-radius: 50%;
+                     background: var(--gold);
+                 }
+
+             .wsMkTitle {
+                 font-weight: 500;
+                 color: var(--dark2);
+                 display: block;
+                 margin-bottom: .2rem;
+             }
+
+             .wsExclusiveBand {
+                 background: var(--warm);
+                 padding: 3.25rem 0;
+             }
+
+             .wsQuotes {
+                 display: grid;
+                 grid-template-columns: repeat(2,minmax(0,1fr));
+                 gap: 2.5rem;
+             }
+
+                 .wsQuotes figure {
+                     margin: 0;
+                 }
+
+             .wsQuote {
+                 font-family: var(--serif);
+                 font-size: 1.35rem;
+                 line-height: 1.45;
+                 color: var(--dark2);
+                 margin: 0 0 .6rem;
+                 max-width: 58ch;
+             }
+
+             .wsQuoteCite {
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--muted);
+             }
+
+             .wsGuideLinks {
+                 list-style: none;
+                 margin: 0;
+                 padding: 0;
+                 display: grid;
+                 grid-template-columns: repeat(2,minmax(0,1fr));
+                 border-top: 1px solid var(--border);
+             }
+
+                 .wsGuideLinks li {
+                     border-bottom: 1px solid var(--border);
+                 }
+
+                 .wsGuideLinks a {
+                     display: flex;
+                     justify-content: space-between;
+                     gap: 1rem;
+                     padding: 1rem .25rem;
+                     color: var(--dark2);
+                     text-decoration: none;
+                 }
+
+                 .wsGuideLinks a:hover {
+                     color: var(--gold2);
+                 }
+
+                 .wsGuideLinks a::after {
+                     content: "\2192";
+                     color: var(--gold);
+                 }
+
+             .wsValuationWrap {
+                 display: grid;
+                 grid-template-columns: minmax(0,5fr) minmax(0,7fr);
+                 gap: 3rem;
+                 align-items: start;
+             }
+
+             .wsValuationForm .wsVfGrid {
+                 display: grid;
+                 grid-template-columns: repeat(2,minmax(0,1fr));
+                 gap: .9rem;
+             }
+
+             .wsValuationForm .wsVfFull {
+                 grid-column: 1/-1;
+             }
+
+             .wsValuationForm label {
+                 display: block;
+                 margin: 0;
+             }
+
+             .wsValuationForm .wsVfLabel {
+                 display: block;
+                 font-family: var(--label);
+                 font-size: var(--t-xs);
+                 letter-spacing: var(--ls-wide);
+                 text-transform: uppercase;
+                 color: var(--muted);
+                 margin-bottom: .35rem;
+             }
+
+             .wsValuationForm input[type=text],
+             .wsValuationForm input[type=email],
+             .wsValuationForm input[type=tel],
+             .wsValuationForm select,
+             .wsValuationForm textarea {
+                 width: 100%;
+                 border: 1px solid var(--border);
+                 background: #fff;
+                 color: var(--dark2);
+                 padding: .7rem .85rem;
+                 border-radius: 2px;
+                 font: inherit;
+             }
+
+             .wsValuationForm .rwTelephone {
+                 display: flex;
+                 gap: .5rem;
+             }
+
+             .wsValuationForm .rwTelephone .rwSelectWrapper {
+                 flex: 0 0 7.5rem;
+             }
+
+             .wsValuationForm label.rwCheckbox {
+                 display: flex;
+                 gap: .6rem;
+                 align-items: flex-start;
+                 font-size: var(--t-sm);
+                 margin-top: .4rem;
+             }
+
+             .wsValuationForm label.rwCheckbox input {
+                 margin-top: .3rem;
+             }
+
+             .wsValuationForm .wsVfSubmit {
+                 margin-top: 1.2rem;
+             }
+
+             .wsValuationForm .wsVfSubmit button {
+                 border: 0;
+                 cursor: pointer;
+             }
+
+             .wsValuationForm .rwMsgSuccess {
+                 color: #2b7a4b;
+                 font-weight: 500;
+                 margin-top: .8rem;
+             }
+
+             .wsValuationForm .rwMsgError {
+                 color: #b23a2c;
+                 margin-top: .8rem;
+             }
+
+             /* ═══════════════════════════════════════════════════════════
+        PROPERTY SEARCH PAGES (Buy, Rent)
+        ═══════════════════════════════════════════════════════════ */
+             .wsSearchPage {
+                 padding-top: 1.5rem;
+             }
+
+             .wsSearchPageHead {
+                 text-align: center;
+             }
+
+             .wsSearchNav {
+                 text-align: center;
+             }
+
+             .wsSearchNavTop {
+                 padding-top: 1rem;
+             }
+
+             .wsSearchResults {
+                 padding: 1rem 0;
+             }
+
+             .rwPropertySearchResultsNavigation ul > li.wsPagerSep {
+                 margin: 0;
+             }
+
+             .wsPagerBtn {
+                 color: #fff;
+                 background-color: #0d6efd;
+                 border: 1px solid #0d6efd;
+                 text-decoration: none;
+                 transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+             }
+
+                 .wsPagerBtn:hover {
+                     color: #fff;
+                     background-color: #0b5ed7;
+                     border-color: #0a58ca;
+                 }
+
+                 .wsPagerBtn.rwDisabled {
+                     pointer-events: none;
+                     opacity: .65;
+                 }
+
+             /* ═══════════════════════════════════════════════════════════
+        RESPONSIVE — layout and pages
+        ═══════════════════════════════════════════════════════════ */
+             @media (min-width:768px) {
+                 .wsStatGrid {
+                     grid-template-columns: repeat(4,minmax(0,1fr));
+                 }
+
+                 .wsViewAllTop {
+                     display: inline;
+                 }
+
+                 .wsViewAllBottom {
+                     display: none;
+                 }
+             }
+
+             @media (min-width:992px) {
+                 .wsWhyLayout,
+                 .wsSellLayout {
+                     grid-template-columns: repeat(12,minmax(0,1fr));
+                 }
+
+                 .wsWhyText {
+                     grid-column: 1/span 6;
+                 }
+
+                 .wsWhyMedia {
+                     display: block;
+                     grid-column: 8/span 5;
+                 }
+
+                 .wsSellIntro {
+                     grid-column: 1/span 5;
+                 }
+
+                 .wsSellLayout > .wsSellServiceGrid {
+                     grid-column: 7/span 6;
+                 }
+
+                 .wsOfficeGrid {
+                     grid-template-columns: repeat(2,minmax(0,1fr));
+                 }
+
+                 .facts {
+                     grid-template-columns: repeat(3,minmax(0,1fr));
+                 }
+
+                 .facts--four {
+                     grid-template-columns: repeat(4,minmax(0,1fr));
+                 }
+             }
+
+             @media (max-width:991.98px) {
+                 .wsSellSteps {
+                     grid-template-columns: repeat(2,minmax(0,1fr));
+                 }
+
+                 .wsValuationWrap {
+                     grid-template-columns: 1fr;
+                 }
+             }
+
+             @media (max-width:767.98px) {
+                 .wsPageHeader h1 {
+                     font-size: 2.1rem;
+                 }
+
+                 .wsAreasGridTier3 {
+                     grid-template-columns: 1fr;
+                     max-width: none;
+                 }
+
+                 .wsSellSteps,
+                 .wsMkList,
+                 .wsQuotes,
+                 .wsGuideLinks,
+                 .wsValuationForm .wsVfGrid {
+                     grid-template-columns: 1fr;
+                 }
+             }
+
+             @media (max-width:575.98px) {
+                 .wsAreasGridStack {
+                     grid-template-columns: 1fr;
+                 }
+             }
+
+             @media (prefers-reduced-motion:reduce) {
+                 .wsIpSpinner {
+                     animation-duration: 1.5s;
+                 }
+             }
+
+             #rwPageHeaderLogo {
+                 padding: 10px 0;
+             }
+
+/* Home: "Meet the family" link under Family-Run, Independently Owned */
+.wsWhyPointLink{display:inline-block;margin-top:.5rem;font-family:var(--label);font-size:var(--t-xs);letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--gold2);text-decoration:none}
+.wsWhyPointLink:hover{color:var(--dark2)}
+
+/* Home hero: the eyebrow sits inside the H1 so the heading names what we do */
+.wsHero h1 .wsEyebrow {
+    line-height: 1.6;
+    margin-bottom: .875rem;
+}
+
+/* Contact page: two office cards side by side */
+.wsContactOffices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+}
+@media (max-width: 767.98px) {
+    .wsContactOffices { grid-template-columns: 1fr; }
+}
+
+/* Area page carousels: fewer, wider cards on smaller screens (restored responsive rules) */
+@media (max-width: 991.98px) {
+    .wsAreaListings .rwPropertySearchResultsItems > article {
+        flex-basis: calc((100% - 1.25rem) / 2) !important;
+    }
+}
+@media (max-width: 575.98px) {
+    .wsAreaListings .rwPropertySearchResultsItems > article {
+        flex-basis: 85% !important;
+    }
+}
+
+/* Search results pager: site colours instead of the engine's default blue */
+.rwPropertySearchResultsNavigation a.wsPagerBtn {
+    background: transparent;
+    color: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s;
+}
+.rwPropertySearchResultsNavigation a.wsPagerBtn:hover:not(.rwDisabled) {
+    background: var(--dark);
+    color: var(--cream);
+    border-color: var(--dark);
+}
+.rwPropertySearchResultsNavigation a.wsPagerBtn.rwDisabled {
+    opacity: .3;
+    pointer-events: none;
+}
+
+/* Property cards: let the details row wrap instead of cutting off on narrow cards */
+.rwPropertySearchResultsItems > article > .rwInner > dl.rwPropertyCharacteristics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: .6rem;
+    white-space: normal;
+    overflow: visible;
+    max-width: 100%;
+}
+
+.rwPropertySearchResultsItems > article > .rwInner > dl.rwPropertyCharacteristics {
+    column-gap: .4rem;
+}
+.rwPropertySearchResultsItems > article > .rwInner > dl.rwPropertyCharacteristics > div + div {
+    border-left: none;
+}
+
+/* Aimée clearance (added 26 Oct 2026): start page content below the fixed Aimée bar.
+   The homepage hero is excluded because Aimée floats over the video there. */
+main:not(:has(.wsHero)) { margin-top: calc(var(--aimee-top, 92px) + 72px) !important; }
+@media (max-width: 480px) {
+  main:not(:has(.wsHero)) { margin-top: calc(var(--aimee-top-mobile, 85px) + 62px) !important; }
+}
+/* Search pages (added 26 Oct 2026): property count sits on one line with the page counter */
+.wsSearchBar{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;column-gap:1.75rem;row-gap:.5rem;margin-top:.5rem}
+.wsSearchBar .wsSearchCount{margin:0}
+.wsSearchBar .wsSearchNavTop{margin:0;padding:0}
+/* Header: main menu drop-downs (wide screens) in the site's colours, above the Aimée bar */
+#rwPageHeader:has(li.rwHasChild.rwExpanded) {
+    z-index: 10000;
+}
+
+#rwPageHeaderNavigationMain > ul > li.rwHasChild > ul {
+    min-width: 230px;
+    max-height: calc(100vh - 110px);
+    margin-top: 0; /* no gap: the drop-down closes when the mouse leaves the item */
+    padding: .5rem 0;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--gold);
+    background-color: var(--cream);
+    box-shadow: 0 14px 32px rgba(26, 24, 21, .10);
+}
+
+    #rwPageHeaderNavigationMain > ul > li.rwHasChild.rwExpanded > ul > li {
+        float: none;
+        padding: 0;
+        line-height: 1.4;
+    }
+
+        #rwPageHeaderNavigationMain > ul > li.rwHasChild > ul > li > a {
+            padding: .5rem 1.25rem;
+            font-family: var(--sans);
+            font-size: var(--t-base);
+            color: var(--dark2);
+            transition: background-color .15s, color .15s;
+        }
+
+            #rwPageHeaderNavigationMain > ul > li.rwHasChild > ul > li > a:hover,
+            #rwPageHeaderNavigationMain > ul > li.rwHasChild > ul > li > a:focus-visible {
+                background-color: var(--warm);
+                color: var(--gold2);
+            }
+
+/* Modals (engine): the site's colours and type */
+dialog.rwModal {
+    --rwModalBackground: var(--cream);
+    --rwModalColor: var(--dark2);
+    --rwModalBorder: 1px solid var(--border);
+    --rwModalDivider: 1px solid var(--border);
+    --rwModalPadding: 1.25rem;
+    --rwModalShadow: 0 24px 60px rgba(26, 24, 21, .25);
+    font-family: var(--sans);
+}
+
+    dialog.rwModal::backdrop {
+        background: rgba(26, 24, 21, .6);
+    }
+
+@media (max-width: 575.98px) {
+    dialog.rwModal {
+        --rwModalMargin: .75rem;
+        --rwModalPadding: 1rem;
+    }
+}
+
+dialog.rwModal .rwModalTitle {
+    font-family: var(--serif);
+    font-size: var(--t-xl);
+    font-weight: 500;
+    color: var(--dark);
+}
+
+dialog.rwModal .rwModalClose {
+    color: var(--dark);
+}
+
+/* Contact modal */
+#rwContactModal .rwModalBody {
+    font-size: var(--t-base);
+    color: var(--sub);
+}
+
+    #rwContactModal .rwModalBody > p {
+        margin: 0 0 .65rem;
+    }
+
+    #rwContactModal .rwModalBody > h5 {
+        margin: 1.25rem 0 .75rem;
+        font-family: var(--serif);
+        font-size: var(--t-xl);
+        font-weight: 500;
+        color: var(--dark);
+    }
+
+    #rwContactModal .rwButton {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: .85rem 1.25rem;
+        border: 1px solid var(--dark2);
+        border-radius: 60px;
+        background: transparent;
+        color: var(--dark2);
+        font-family: var(--label);
+        font-size: var(--t-xs);
+        font-weight: 500;
+        letter-spacing: var(--ls-normal);
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        transition: all .18s;
+    }
+
+        #rwContactModal .rwButton:hover {
+            background: var(--dark2);
+            color: var(--cream);
+        }
+
+    #rwContactModal a.rwButton[href^="tel:"],
+    #rwContactModal button.rwButton[type=submit] {
+        border-color: var(--gold);
+        background: var(--gold);
+        color: var(--dark);
+    }
+
+        #rwContactModal a.rwButton[href^="tel:"]:hover,
+        #rwContactModal button.rwButton[type=submit]:hover {
+            border-color: var(--gold2);
+            background: var(--gold2);
+            color: var(--dark);
+        }
+
+    #rwContactModal .rwBorder.rwP2 {
+        padding: 0 !important; /* the engine's utilities use !important */
+        border: 0 !important;
+    }
+
+    #rwContactModal .rwContactForm label {
+        display: block;
+        margin: 0 0 .65rem;
+    }
+
+    #rwContactModal .rwContactForm input[type=text],
+    #rwContactModal .rwContactForm input[type=email],
+    #rwContactModal .rwContactForm input[type=tel],
+    #rwContactModal .rwContactForm select,
+    #rwContactModal .rwContactForm textarea {
+        width: 100%;
+        height: auto;
+        padding: .7rem .85rem;
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        background: #fff;
+        color: var(--dark2);
+        font: inherit;
+    }
+
+        #rwContactModal .rwContactForm input:focus,
+        #rwContactModal .rwContactForm select:focus,
+        #rwContactModal .rwContactForm textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+    #rwContactModal .rwContactForm .rwTelephone {
+        gap: .5rem;
+    }
+
+        #rwContactModal .rwContactForm .rwTelephone .rwSelectWrapper {
+            flex: 0 0 8.5rem;
+        }
+
+    #rwContactModal .rwContactForm label.rwCheckbox {
+        font-size: var(--t-sm);
+        line-height: 1.5;
+        color: var(--sub);
+    }
+
+        #rwContactModal .rwContactForm label.rwCheckbox a {
+            color: var(--gold2);
+        }
+
+    #rwContactModal .rwContactForm button[type=submit] {
+        margin-top: .5rem;
+    }
+
+/* Menu modal (small screens) */
+#rwMainMenuModal .rwModalBody ul > li {
+    border-top: 1px solid var(--border);
+}
+
+#rwMainMenuModal .rwModalBody > ul > li:first-child {
+    border-top: 0;
+}
+
+#rwMainMenuModal .rwModalBody ul > li > a,
+#rwMainMenuModal .rwModalBody ul > li > button {
+    line-height: 3.25rem;
+    font-family: var(--sans);
+    font-size: var(--t-lg);
+    font-weight: 500;
+    color: var(--dark2);
+}
+
+    #rwMainMenuModal .rwModalBody ul > li > a:hover,
+    #rwMainMenuModal .rwModalBody ul > li > button:hover,
+    #rwMainMenuModal .rwModalBody ul > li.rwActive > a {
+        color: var(--gold2);
+    }
+
+#rwMainMenuModal .rwModalBody ul > li.rwHasChild > button::after {
+    color: var(--gold);
+}
+
+#rwMainMenuModal .rwModalBody ul > li.rwHasChild > ul {
+    background: var(--warm);
+}
+
+    #rwMainMenuModal .rwModalBody ul > li.rwHasChild > ul > li {
+        border-top-color: rgba(26, 24, 21, .06);
+    }
+
+        #rwMainMenuModal .rwModalBody ul > li.rwHasChild > ul > li > a {
+            line-height: 2.75rem;
+            font-size: var(--t-base);
+            font-weight: 400;
+        }
+
+/* Buy and Rent: count line with a Filters button, and the Filters panel (added 26 Oct 2026; replaces the earlier drop-downs and Aimée pop-up) */
+.wsSearchBar { column-gap: .9rem; }
+.wsSearchSep { color: var(--muted); }
+.wsSearchSep:has(+ [hidden]) { display: none; }
+.wsFiltersBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    font-family: var(--label);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: var(--ls-normal);
+    text-transform: uppercase;
+    color: var(--dark2);
+    background: transparent;
+    border: 1px solid var(--dark2);
+    border-radius: 60px;
+    padding: .55rem 1.2rem;
+    cursor: pointer;
+    transition: background-color .15s, color .15s, border-color .15s;
+}
+.wsFiltersBtn::before {
+    font-family: "Font Awesome 7 Pro";
+    font-weight: 300;
+    content: "\f1de";
+}
+.wsFiltersBtn:hover { background: var(--dark2); color: var(--cream); }
+.wsFiltersBtn.wsIsActive { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+.wsFiltersBtn.wsIsActive:hover { background: var(--gold2); border-color: var(--gold2); }
+.wsFiltersBtn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+dialog.rwModal.wsFiltersModal { --rwModalWidth: 480px; --rwModalRadius: 6px; }
+.wsFiltersModal .rwModalHeader { position: relative; }
+.wsFiltersGrip { display: none; }
+.wsFiltersAimee {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .85rem;
+    padding: 1.1rem 1.2rem;
+    border-radius: 6px;
+    background: var(--dark);
+    color: var(--cream);
+}
+.wsFiltersAimeeTitle { margin: 0; font-family: var(--serif); font-size: var(--t-lg); color: var(--cream); }
+.wsFiltersAimeeTitle { text-align: center; align-self: stretch; }
+.wsFiltersAimeeRow { display: flex; align-items: center; gap: 1rem; align-self: stretch; }
+.wsFiltersAimeeRow > .wsBtnIp { flex-shrink: 0; }
+.wsFiltersTicker {
+    flex: 1;
+    min-width: 0;
+    min-height: 2.6em;
+    display: flex;
+    align-items: center;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--gold);
+    cursor: pointer;
+}
+.wsFiltersTicker.wsIsTicking::after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: .95em;
+    margin-left: 2px;
+    background: var(--gold);
+    animation: wsCaret 1s steps(1) infinite;
+}
+@keyframes wsCaret { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .wsFiltersTicker.wsIsTicking::after { display: none; } }
+.wsFiltersOr {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin: 1.25rem 0 1rem;
+    font-family: var(--label);
+    font-size: var(--t-xs);
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.wsFiltersOr::before, .wsFiltersOr::after { content: ""; flex: 1; border-top: 1px solid var(--border); }
+.wsFiltersField { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+.wsFiltersField:last-child { margin-bottom: 0; }
+.wsFiltersField label, .wsFiltersLabel {
+    font-family: var(--label);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.wsFiltersPair { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.wsFiltersModal select {
+    width: 100%;
+    min-width: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: var(--sans);
+    font-size: var(--t-base);
+    color: var(--dark2);
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%235C564E' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right .9rem center / 10px 6px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    height: auto;
+    min-height: 2.9rem;
+    line-height: 1.4;
+    padding: .65rem 2.2rem .65rem .85rem;
+    cursor: pointer;
+}
+.wsFiltersModal select:focus-visible { border-color: var(--gold); outline: 2px solid var(--gold); outline-offset: 1px; }
+.wsFiltersModal .rwModalFooter { justify-content: space-between; }
+
+/* Phones: the panel is a bottom sheet with a grab handle */
+@media (max-width: 575.98px) {
+    dialog.rwModal.wsFiltersModal {
+        --rwModalMargin: 0;
+        width: 100%;
+        max-height: 88vh;
+        max-height: 88dvh;
+        margin: auto 0 0;
+        border: 0;
+        border-radius: 16px 16px 0 0;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    dialog.rwModal.wsFiltersModal[open] { animation: wsSheetIn .25s ease-out; }
+    dialog.rwModal.wsFiltersModal.rwModalClosing { animation: wsSheetOut .2s ease-in forwards; }
+    .wsFiltersGrip {
+        display: block;
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        width: 40px;
+        height: 4px;
+        margin-left: -20px;
+        border-radius: 2px;
+        background: var(--border);
+    }
+    .wsFiltersModal .rwModalHeader { padding-top: 1.4rem; }
+    .wsFiltersModal .rwModalFooter > .wsBtnIp { flex: 1; }
+}
+@keyframes wsSheetIn { from { transform: translateY(100%); } }
+@keyframes wsSheetOut { to { transform: translateY(100%); } }
+@media (prefers-reduced-motion: reduce) {
+    dialog.rwModal.wsFiltersModal[open], dialog.rwModal.wsFiltersModal.rwModalClosing { animation: none; }
+}
+
+/* Page headings (Buy, Rent, area and other content pages, property pages): 20% smaller on larger screens (phones unchanged) */
+@media (min-width: 992px) {
+    .wsSearchPageHead h1, .wsPageHeader h1, #rwPropertyDetail h1 { font-size: calc(var(--t-3xl) * .8); }
+}
+
+/* Property pages: WhatsApp and Call buttons under the title (added by the "Property contact buttons" fragment) */
+#rwPropertyDetail h1:has(+ .wsPropertyContact) { margin-bottom: 1.25rem; }
+.wsPropertyContact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .75rem;
+    margin-bottom: 1.75rem;
+}
+.wsPropertyContact .wsBtnIp { display: inline-flex; align-items: center; gap: .55rem; }
+.wsPropertyWhatsApp::before { font-family: "Font Awesome 7 Brands"; font-weight: 400; content: "\f232"; font-size: 1.15em; }
+.wsPropertyCall::before { font-family: "Font Awesome 7 Pro"; font-weight: 300; content: "\f095"; font-size: 1.05em; }
+@media (max-width: 575.98px) {
+    .wsPropertyContact .wsBtnIp { flex: 1 1 0; justify-content: center; padding-left: .75rem; padding-right: .75rem; }
+    .wsPropertyCall { font-size: 0; }
+    .wsPropertyCall::after { content: "Call us"; font-size: var(--t-xs); }
+    .wsPropertyCall::before { font-size: .9rem; }
+}
+
+/* Legal pages (Data Protection Policy): long-form text, contents list, office boxes and table */
+.wsLegal { max-width: 860px; margin: 0 auto; line-height: 1.75; color: var(--dark2); }
+.wsLegal h2 {
+    font-family: var(--serif);
+    font-size: var(--t-xl);
+    font-weight: 500;
+    color: var(--dark);
+    margin: 2.75rem 0 .75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 140px;
+}
+.wsLegal h3 { font-family: var(--sans); font-size: var(--t-md); font-weight: 600; color: var(--dark); margin: 1.6rem 0 .5rem; }
+.wsLegal p, .wsLegal ul { margin: 0 0 .9rem; }
+.wsLegal ul { padding-left: 1.4rem; }
+.wsLegal li { margin-bottom: .4rem; }
+.wsLegal a { color: var(--dark); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+.wsLegal a:hover { color: var(--gold2); }
+.wsLegalIntro { background: var(--warm); border-left: 3px solid var(--gold); padding: 1.1rem 1.25rem; margin: 0 0 1.75rem; }
+.wsLegalIntro p:last-child { margin-bottom: 0; }
+.wsLegalToc { background: #fff; border: 1px solid var(--border); padding: 1.1rem 1.4rem; margin: 0 0 .5rem; }
+.wsLegalToc strong {
+    display: block;
+    margin-bottom: .5rem;
+    font-family: var(--label);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--gold2);
+}
+.wsLegalToc ol { margin: 0; padding-left: 1.25rem; columns: 2; column-gap: 2rem; }
+.wsLegalToc li { margin-bottom: .25rem; break-inside: avoid; }
+.wsLegal .wsLegalToc a { text-decoration: none; }
+.wsLegal .wsLegalToc a:hover { text-decoration: underline; }
+.wsLegalOffices { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0 0 1rem; }
+.wsLegalOffice { flex: 1 1 280px; background: var(--warm); padding: 1rem 1.15rem; font-size: var(--t-base); }
+.wsLegalOffice strong { display: block; font-family: var(--serif); font-size: var(--t-lg); font-weight: 600; color: var(--dark); margin-bottom: .25rem; }
+.wsLegalTable { overflow-x: auto; margin: 0 0 1rem; -webkit-overflow-scrolling: touch; }
+.wsLegalTable table { width: 100%; border-collapse: collapse; font-size: var(--t-base); min-width: 560px; }
+.wsLegalTable th {
+    background: var(--dark);
+    color: var(--cream);
+    text-align: left;
+    font-family: var(--label);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: var(--ls-normal);
+    text-transform: uppercase;
+    padding: .7rem .8rem;
+}
+.wsLegalTable td { padding: .7rem .8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.wsLegalTable tr:nth-child(even) td { background: var(--warm); }
+@media (max-width: 575.98px) {
+    .wsLegalToc ol { columns: 1; }
+}
+
+/* Footer: opening hours and languages shared by both offices, in one strip under the office cards */
+.wsOfficeShared {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2.5rem;
+    margin-top: 1.5rem;
+    padding: 1.5rem 2.5rem;
+    background: rgba(250,248,245,.03);
+    border: 1px solid rgba(250,248,245,.07);
+}
+.wsOfficeShared .wsOfficeHours { margin: 0; }
+.wsOfficeShared .wsLangsRow { margin: 0; padding: 0; border: 0; align-items: baseline; }
+.wsLangsLabel {
+    font-family: var(--label);
+    font-size: var(--t-xs);
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-right: .35rem;
+}
+.wsOfficeShared .wsLangChip:last-child::after { content: none; }
+@media (max-width: 575.98px) {
+    .wsOfficeShared { padding: 1.25rem 1.5rem; }
+}
+
+/* Home: "Our favourite properties" cards show only price and reference, on one line, no bold labels */
+#wsProperties .rwPropertySearchResultsItems > article > .rwInner > dl.rwPropertyCharacteristics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: .25rem 1rem;
+    width: auto;
+    max-width: none;
+    margin: .65rem 1rem 0;
+    padding: .6rem 0 .8rem;
+    border-top: 1px solid var(--border);
+}
+#wsProperties dl.rwPropertyCharacteristics > div:not(.rwPrice):not(.rwReference) { display: none; }
+#wsProperties dl.rwPropertyCharacteristics > .rwPrice,
+#wsProperties dl.rwPropertyCharacteristics > .rwReference { display: block; flex: 0 0 auto; width: auto; margin: 0; padding: 0; border: 0; }
+#wsProperties dl.rwPropertyCharacteristics > .rwPrice { order: -1; }
+#wsProperties dl.rwPropertyCharacteristics dd { margin: 0; }
+#wsProperties dl.rwPropertyCharacteristics > .rwPrice dd { font-family: var(--serif); font-size: var(--t-xl); font-weight: 600; line-height: 1.2; color: var(--dark); }
+#wsProperties dl.rwPropertyCharacteristics > .rwReference dd { font-size: var(--t-sm); font-weight: 400; letter-spacing: var(--ls-normal); color: var(--muted); }
+#wsProperties dl.rwPropertyCharacteristics > .rwReference dd::before { content: "Ref. "; }
+#wsProperties dl.rwPropertyCharacteristics dt {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+/* Property selection page: command buttons under the heading */
+.wsSelectionCommands {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+    margin: 1.5rem 0 2.5rem;
+}
+
+    .wsSelectionCommands .wsBtnIp {
+        gap: .5rem;
+        cursor: pointer;
+    }
+
+/* Header tools: icons only. The engine puts each text in span.rwText; the links' titles still name them.
+   The margins only change where that span exists, so the rules are safe before and after the engine update. */
+#rwPageHeaderNavigationTools .rwText {
+    display: none;
+}
+
+#rwPageHeaderNavigationTools > ul > li > a:has(> .rwText)::before {
+    margin-right: 0;
+}
+
+#rwPageHeaderNavigationTools .rwText + .rwCount {
+    margin-left: .25em;
+}
+
+/* Header: the selection heart in red */
+#rwPageHeaderNavigationTools #rwPageHeaderNavigationToolsSelection > a:first-child::before {
+    color: #B3261E;
+}
+
+/* Search results pager: the engine fixes the list at 38px with overflow hidden, which cut off the bottom of the 40px pager buttons */
+.wsSearchNav.rwPropertySearchResultsNavigation > ul { height: auto; overflow: visible; }
+.wsSearchNav.rwPropertySearchResultsNavigation > ul > li { height: auto; }
+
+/* FAQ page: the first group heading sits straight under the page header */
+.wsLegal.wsFaq > h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+
+
+@media (min-width: 1200px) {
+  #rwPageHeaderNavigationMain {
+     font-size: 14px;
+  }
+}
+/* Home: favourite properties head with two buttons (Luxury villas + View all) */
+@media (max-width: 575.98px) {
+  #wsProperties .wsSectionHead { flex-wrap: wrap; row-gap: 1rem; }
+  #wsProperties .wsSectionHead > .wsCtaActions { flex-direction: row; flex-wrap: wrap; width: 100%; }
+}
+/* Reviews page: stars on their own line above each review, slightly smaller quote text for longer reviews */
+.wsReviews .wsReviewStars { display: block; margin-bottom: .5rem; }
+.wsReviews .wsQuote { font-size: 1.15rem; }
+
+/* Blog index (/en/blog): the engine's article list as the site's blog cards, and its pager */
+.wsBlogIndex .rwBlogArticleList {
+    gap: 2.5rem 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+    .wsBlogIndex .rwBlogArticleList .rwBlogArticleListItem {
+        text-decoration: none;
+        color: var(--dark2);
+    }
+
+        .wsBlogIndex .rwBlogArticleList .rwBlogArticleListItem img {
+            height: auto;
+            aspect-ratio: 16/9;
+            margin: 0 0 1rem;
+            background: var(--warm);
+        }
+
+        .wsBlogIndex .rwBlogArticleList .rwBlogArticleListItem h3 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: var(--ls-tight);
+            line-height: 1.25;
+            margin: 0;
+            transition: color .15s;
+        }
+
+        .wsBlogIndex .rwBlogArticleList .rwBlogArticleListItem:hover h3,
+        .wsBlogIndex .rwBlogArticleList .rwBlogArticleListItem:focus-visible h3 {
+            color: var(--gold);
+        }
+
+    .wsBlogIndex .rwBlogPager a {
+        font-family: var(--label);
+        font-size: var(--t-xs);
+        font-weight: 500;
+        letter-spacing: var(--ls-wide);
+        text-transform: uppercase;
+        color: var(--gold);
+        text-decoration: none;
+    }
+
+/* Blog articles migrated from DropInBlog: images, contents block, FAQs and tables (ws versions of DropInBlog's built-in styles) */
+.rwBlogArticle p + h2 {
+    margin-top: 1rem;
+}
+
+.rwBlogArticle img.wsImgBlock, .rwBlogArticle .wsImgBlock img {
+    display: block;
+    float: none;
+    margin: 1.5rem auto;
+}
+
+.rwBlogArticle .wsImgBlock.wsImgLeft, .rwBlogArticle .wsImgBlock.wsImgLeft img {
+    margin-left: 0;
+}
+
+.rwBlogArticle .wsImgBlock.wsImgRight, .rwBlogArticle .wsImgBlock.wsImgRight img {
+    margin-right: 0;
+}
+
+.rwBlogArticle img.wsImgInline, .rwBlogArticle .wsImgInline img {
+    display: inline-block;
+    vertical-align: bottom;
+    margin: .3rem;
+    max-width: calc(100% - .6rem);
+}
+
+.rwBlogArticle .wsImgInline.wsImgLeft {
+    float: left;
+    margin: .3rem 1rem .3rem 0;
+}
+
+.rwBlogArticle .wsImgInline.wsImgRight {
+    float: right;
+    margin: .3rem 0 .3rem 1rem;
+}
+
+.rwBlogArticle .wsToc {
+    margin: 2em 0;
+    padding: 16px;
+    background: var(--warm);
+}
+
+    .rwBlogArticle .wsToc summary,
+    .rwBlogArticle .wsFaqItem summary {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .rwBlogArticle .wsToc summary {
+        margin: -16px;
+        padding: 16px 48px 16px 16px;
+        line-height: 1;
+    }
+
+    .rwBlogArticle .wsToc[open] summary {
+        padding-bottom: 10px;
+    }
+
+        .rwBlogArticle .wsToc summary::-webkit-details-marker,
+        .rwBlogArticle .wsFaqItem summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .rwBlogArticle .wsToc summary > * {
+            display: inline;
+        }
+
+        .rwBlogArticle .wsToc summary h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            line-height: 1;
+            font-weight: normal;
+        }
+
+    .rwBlogArticle .wsToc ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+        .rwBlogArticle .wsToc ul li {
+            margin: 0;
+            line-height: 1.3;
+        }
+
+            .rwBlogArticle .wsToc ul li a {
+                display: block;
+                padding: 4px 16px;
+                text-decoration: none;
+            }
+
+/* The + sign that turns into a - when open, as on the old blog */
+.rwBlogArticle .wsToc summary::before, .rwBlogArticle .wsToc summary::after,
+.rwBlogArticle .wsFaqItem summary::before, .rwBlogArticle .wsFaqItem summary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 2px;
+    background: currentColor;
+    opacity: .5;
+    transition: transform .15s ease, opacity .15s ease;
+}
+
+.rwBlogArticle .wsToc summary::before, .rwBlogArticle .wsToc summary::after {
+    right: 18px;
+}
+
+.rwBlogArticle .wsFaqItem summary::before, .rwBlogArticle .wsFaqItem summary::after {
+    right: .2em;
+}
+
+.rwBlogArticle .wsToc summary::after, .rwBlogArticle .wsFaqItem summary::after {
+    transform: rotate(90deg);
+}
+
+.rwBlogArticle .wsToc[open] summary::after, .rwBlogArticle .wsFaqItem[open] summary::after {
+    transform: rotate(0);
+}
+
+.rwBlogArticle .wsToc summary:hover::before, .rwBlogArticle .wsToc summary:hover::after,
+.rwBlogArticle .wsFaqItem summary:hover::before, .rwBlogArticle .wsFaqItem summary:hover::after {
+    opacity: 1;
+}
+
+.rwBlogArticle .wsFaq {
+    margin: 3em 0;
+}
+
+.rwBlogArticle .wsFaqItem {
+    margin: 0;
+    border-bottom: 1px solid var(--border);
+}
+
+    .rwBlogArticle .wsFaqItem summary {
+        margin: 0;
+        padding: 1em 1.75em 1em 0;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    .rwBlogArticle .wsFaqItem .wsFaqItemContent > div {
+        padding-bottom: 1em;
+    }
+
+        .rwBlogArticle .wsFaqItem .wsFaqItemContent p {
+            margin: 0 0 1em;
+        }
+
+        .rwBlogArticle .wsFaqItem .wsFaqItemContent > div > :last-child {
+            margin-bottom: 0;
+        }
+
+.rwBlogArticle .wsTableWrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5em 0;
+}
+
+.rwBlogArticle .wsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .rwBlogArticle .wsTable th, .rwBlogArticle .wsTable td {
+        padding: .5em .75em;
+        text-align: left;
+        vertical-align: top;
+    }
+
+.rwBlogArticle .wsTableBordered th, .rwBlogArticle .wsTableBordered td {
+    border: 1px solid var(--border);
+}
+
+.rwBlogArticle .wsTableStriped tbody tr:nth-child(odd) {
+    background: var(--warm);
+}
+
+/* Accessibility: text contrast (WCAG AA), added 13 Nov 2026 */
+.wsStatNum em{color:#a48a5a}
+.wsStatLabel,.wsAreaDesc{color:#767067}
+.wsEyebrow:not(.wsEyebrowGold):not(.wsEyebrowLight){color:#696359}
+.wsWhyPointLink{color:#886c42}
+.wsSellServiceNum{color:#696765}
+.wsLangChip{color:#8a8886}
+.wsFooterLink,.wsSocialBtn{color:#848280}
+.wsFooterCopy{color:#838280}
+/* Buy page intro and content, added 13 Nov 2026 */
+.wsBuyIntro{max-width:52rem;margin:0 auto 1.5rem;text-align:center}
+.wsBuyIntro a,.wsBuyContent p a,.wsBuyContent li a{text-decoration:underline;text-underline-offset:2px}
+
+/* Expose pages: photo strip directly under the main photo, browse arrows (wsPhotoStrip body fragment) */
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:6px 0;margin:0;height:auto}
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip::-webkit-scrollbar{display:none}
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a{flex:0 0 auto;width:calc((100% - 4*6px)/5);height:auto;aspect-ratio:3/2;margin:0;background-size:cover;background-position:center;scroll-snap-align:start;cursor:zoom-in;outline:3px solid transparent;outline-offset:-3px;transition:outline-color .2s,opacity .2s;opacity:.65}
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a:hover,#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a.wsActive{opacity:1}
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a.wsActive{outline-color:#fff}
+#rwPropertyDetail .rwIntro.wsHeroBrowse{position:relative}
+#rwPropertyDetail .rwIntro.wsHeroBrowse>img{transition:opacity .25s}
+.wsPhotoStripWrap{position:relative}
+#rwPropertyDetail .rwIntro .wsPhotoCounter{position:absolute;right:16px;top:calc(50% + 34px);bottom:auto;left:auto;width:auto;height:auto;transform:none;z-index:5;background:rgba(0,0,0,.55);color:#fff;font-size:14px;line-height:1.4;padding:4px 10px;border-radius:3px;pointer-events:none}
+.wsBrowseButton{position:absolute;top:50%;z-index:5;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;border:0;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:22px;cursor:pointer;transition:background .2s,opacity .2s}
+.wsBrowseButton:hover,.wsBrowseButton:focus-visible{background:rgba(0,0,0,.75)}
+.wsBrowseButton[hidden]{display:none}
+.wsBrowsePrev{left:16px}
+.wsBrowseNext{right:16px}
+.wsPhotoStripWrap .wsBrowseButton{width:40px;height:40px;font-size:18px}
+.wsPhotoStripWrap .wsBrowsePrev{left:8px}
+.wsPhotoStripWrap .wsBrowseNext{right:8px}
+#rwPropertyDetailMoreImagesButton.wsHidden{display:none!important}
+#rwPropertyDetail .rwSlideshow{padding:0}
+html:not(.aimee-open) body.wsAimeeOverPhotos #aimee-launcher,html:not(.aimee-open) body.wsAimeeOverPhotos #aimee-nudge,html:not(.aimee-open) body:has(#rwPropertyDetail .rwSlideshow.rwShow) #aimee-launcher,html:not(.aimee-open) body:has(#rwPropertyDetail .rwSlideshow.rwShow) #aimee-nudge{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s}
+#rwPropertyDetail .rwSlideshow .rwCarousel .rwCarouselPrev:before,#rwPropertyDetail .rwSlideshow .rwCarousel .rwCarouselNext:before,#rwPropertyDetail .rwSlideshow .rwCarousel .rwTimes:after{text-shadow:0 0 8px rgba(0,0,0,.8)}
+#rwPropertyDetail .rwSlideshow .rwCarousel .rwCarouselInner .rwCarouselItem img{width:100%;height:100%;max-width:none;max-height:none;object-fit:contain}
+/* wsActionsRow: the action icons in their own row under the main photo, at every width */
+#rwPropertyDetail .rwIntro{height:auto;min-height:0;max-height:none}
+#rwPropertyDetail .rwIntro>img{position:static;transform:none;width:100%;height:45vw;min-height:400px;max-height:90vh;object-fit:cover}
+#rwPropertyDetail .rwIntro .rwQuickActions{position:static;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px;padding:10px 8px;background:none;border-bottom:1px solid rgba(0,0,0,.1)}
+#rwPropertyDetail .rwIntro .rwQuickActions>a,#rwPropertyDetail .rwIntro .rwQuickActions>span{margin:0;padding:4px 14px;color:#222;font-size:12px;line-height:1.3;white-space:nowrap;border-radius:4px;transition:background .2s}
+#rwPropertyDetail .rwIntro .rwQuickActions>a:hover,#rwPropertyDetail .rwIntro .rwQuickActions>span:hover{background:rgba(0,0,0,.05)}
+#rwPropertyDetail .rwIntro .rwQuickActions>a:before,#rwPropertyDetail .rwIntro .rwQuickActions>span:before{font-size:20px;line-height:24px;margin-bottom:2px}
+#rwPropertyDetail .rwIntro.wsHeroBrowse>.wsBrowseButton{top:calc(50% - 33px)}
+#rwPropertyDetail .rwIntro .wsPhotoCounter{top:calc(50% + 2px)}
+@media (max-width:991.98px){#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a{width:calc((100% - 2*6px)/3)}}
+@media (max-width:575.98px){#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a{width:40%}.wsBrowseButton{display:none!important}
+#rwPropertyDetail .rwIntro{height:auto;min-height:0;max-height:none}
+#rwPropertyDetail .rwIntro>img{height:auto;min-height:0;max-height:none;aspect-ratio:3/2}
+#rwPropertyDetail .rwIntro .rwQuickActions{flex-wrap:nowrap;justify-content:space-between;gap:0;padding:8px 4px}
+#rwPropertyDetail .rwIntro .rwQuickActions>a,#rwPropertyDetail .rwIntro .rwQuickActions>span{flex:1 1 0;min-width:0;padding:0;font-size:10px}
+#rwPropertyDetail .rwIntro .rwQuickActions>a:before,#rwPropertyDetail .rwIntro .rwQuickActions>span:before{font-size:18px;line-height:22px;margin-bottom:2px}
+#rwPropertyDetail .rwIntro .wsPhotoCounter{right:8px;top:8px;font-size:12px;padding:2px 7px}}

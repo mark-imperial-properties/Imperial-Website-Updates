@@ -1,0 +1,133 @@
+<script>
+// Expose pages: photo strip under the main photo, with browse arrows on the main photo and the strip
+(function () {
+  var fullUrls = [];
+  // The engine deletes data-images when it starts, so read the full-size photo addresses first
+  function readImages() {
+    var gallery = document.getElementById('rwPropertyDetailImageGallery');
+    if (!gallery || !gallery.dataset.images || fullUrls.length) return;
+    atob(gallery.dataset.images.replace(/-/g, '+').replace(/_/g, '/')).split('|').forEach(function (item) {
+      var url = item.split(';')[1] || '';
+      fullUrls.push(url.indexOf('http') === 0 || url.indexOf('/') === 0 ? url : 'https://' + url);
+    });
+  }
+  // This fragment sits above the gallery in the page, so watch for the gallery as the page loads
+  var watcher = new MutationObserver(function () { readImages(); if (fullUrls.length) watcher.disconnect(); });
+  watcher.observe(document.documentElement, { childList: true, subtree: true });
+  document.addEventListener('DOMContentLoaded', function () { readImages(); watcher.disconnect(); });
+
+  function button(cls, icon, label, onclick) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'wsBrowseButton ' + cls;
+    b.setAttribute('aria-label', label);
+    b.innerHTML = '<i class="fa-light ' + icon + '"></i>';
+    b.addEventListener('click', onclick);
+    return b;
+  }
+
+  (window.rwReady = window.rwReady || []).push(function () {
+    var gallery = document.getElementById('rwPropertyDetailImageGallery');
+    var intro = document.querySelector('#rwPropertyDetail .rwIntro');
+    if (!gallery || !intro) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'wsPhotoStripWrap';
+    intro.after(wrap);
+    wrap.append(gallery);
+    gallery.classList.add('wsPhotoStrip');
+
+    // Frame the main photo so its banner, arrows and counter stay on it, with the action icons beside or under it
+    var hero = intro.querySelector(':scope > img');
+    var frame = document.createElement('div');
+    frame.className = 'wsHeroPhoto';
+    if (hero) {
+      hero.before(frame);
+      frame.append(hero);
+      intro.querySelectorAll(':scope > .rwLabel').forEach(function (label) { frame.append(label); });
+      intro.classList.add('wsHeroFramed');
+    }
+    var total = parseInt(gallery.dataset.count, 10) || 0;
+
+    // The engine adds 12 photos per click of its button: keep clicking until all are in the strip
+    var more = document.getElementById('rwPropertyDetailMoreImagesButton');
+    if (more) {
+      more.classList.add('wsHidden');
+      var loadMore = function () {
+        if (gallery.children.length < total && document.body.contains(more)) more.click();
+        else observer.disconnect();
+      };
+      var observer = new MutationObserver(loadMore);
+      observer.observe(gallery, { childList: true });
+      loadMore();
+    }
+
+    // Strip arrows: scroll one strip width, hidden at either end
+    var stripPrev = button('wsBrowsePrev', 'fa-chevron-left', 'Previous photos', function () { gallery.scrollBy({ left: -gallery.clientWidth }); });
+    var stripNext = button('wsBrowseNext', 'fa-chevron-right', 'Next photos', function () { gallery.scrollBy({ left: gallery.clientWidth }); });
+    wrap.append(stripPrev, stripNext);
+    function updateStripButtons() {
+      stripPrev.hidden = gallery.scrollLeft < 5;
+      stripNext.hidden = gallery.scrollLeft + gallery.clientWidth > gallery.scrollWidth - 5;
+    }
+    gallery.addEventListener('scroll', updateStripButtons, { passive: true });
+    window.addEventListener('resize', updateStripButtons);
+    new MutationObserver(updateStripButtons).observe(gallery, { childList: true });
+    updateStripButtons();
+
+    // Fade out the Ask Aimée bar while it sits over the main photo or the strip
+    var aimeeTicking = false;
+    function checkAimee() {
+      aimeeTicking = false;
+      var launcher = document.getElementById('aimee-launcher');
+      if (!launcher) return;
+      var a = launcher.getBoundingClientRect(), over = false;
+      [intro, wrap].forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < a.bottom && r.bottom > a.top) over = true; });
+      if (launcher.closest('#aimee-widget-root').contains(document.activeElement)) over = false;
+      document.body.classList.toggle('wsAimeeOverPhotos', over);
+    }
+    function queueAimeeCheck() { if (!aimeeTicking) { aimeeTicking = true; requestAnimationFrame(checkAimee); } }
+    window.addEventListener('scroll', queueAimeeCheck, { passive: true });
+    window.addEventListener('resize', queueAimeeCheck);
+    queueAimeeCheck();
+
+    // Main photo arrows: show the previous or next full-size photo and highlight it in the strip
+    if (!hero || fullUrls.length < 2) return;
+    intro.classList.add('wsHeroBrowse');
+    var current = 0;
+    var counter = document.createElement('div');
+    counter.className = 'wsPhotoCounter';
+    frame.append(counter);
+    function show(index) {
+      current = (index + fullUrls.length) % fullUrls.length;
+      hero.src = fullUrls[current];
+      counter.textContent = (current + 1) + ' / ' + fullUrls.length;
+      new Image().src = fullUrls[(current + 1) % fullUrls.length];
+      var thumbs = gallery.children;
+      for (var i = 0; i < thumbs.length; i++) thumbs[i].classList.toggle('wsActive', i === current);
+      var thumb = thumbs[current];
+      if (thumb && (thumb.offsetLeft < gallery.scrollLeft || thumb.offsetLeft + thumb.offsetWidth > gallery.scrollLeft + gallery.clientWidth)) {
+        gallery.scrollTo({ left: thumb.offsetLeft - gallery.offsetLeft });
+      }
+    }
+    frame.append(
+      button('wsBrowsePrev', 'fa-chevron-left', 'Previous photo', function () { show(current - 1); }),
+      button('wsBrowseNext', 'fa-chevron-right', 'Next photo', function () { show(current + 1); })
+    );
+    counter.textContent = '1 / ' + fullUrls.length;
+    // Swipe the main photo to browse (phones have no arrow buttons)
+    var startX = null, startY = null;
+    intro.addEventListener('touchstart', function (e) {
+      if (e.target.closest('.rwQuickActions, .wsBrowseButton')) { startX = null; return; }
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+    }, { passive: true });
+    intro.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX, dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(current + (dx < 0 ? 1 : -1));
+      startX = null;
+    }, { passive: true });
+    new MutationObserver(function () { var t = gallery.children[current]; if (t) t.classList.add('wsActive'); }).observe(gallery, { childList: true });
+    if (gallery.children[0]) gallery.children[0].classList.add('wsActive');
+  });
+})();
+</script>

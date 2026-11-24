@@ -1,0 +1,6 @@
+{
+  "name": "imperial-website-checks",
+  "private": true,
+  "description": "Browser checks for the expose-page photo layout, run against the live site",
+  "dependencies": { "playwright-core": "1.48.2" }
+}

@@ -1,0 +1,45 @@
+/* Expose pages: photo strip directly under the main photo, browse arrows (wsPhotoStrip body fragment) */
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:6px 0;margin:0;height:auto}
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip::-webkit-scrollbar{display:none}
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a{flex:0 0 auto;width:calc((100% - 4*6px)/5);height:auto;aspect-ratio:3/2;margin:0;background-size:cover;background-position:center;scroll-snap-align:start;cursor:zoom-in;outline:3px solid transparent;outline-offset:-3px;transition:outline-color .2s,opacity .2s;opacity:.65}
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a:hover,#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a.wsActive{opacity:1}
+#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a.wsActive{outline-color:#fff}
+#rwPropertyDetail .rwIntro .wsHeroPhoto>img{transition:opacity .25s}
+.wsPhotoStripWrap{position:relative}
+#rwPropertyDetail .rwIntro .wsPhotoCounter{position:absolute;right:16px;top:calc(50% + 34px);bottom:auto;left:auto;width:auto;height:auto;transform:none;z-index:5;background:rgba(0,0,0,.55);color:#fff;font-size:14px;line-height:1.4;padding:4px 10px;border-radius:3px;pointer-events:none}
+.wsBrowseButton{position:absolute;top:50%;z-index:5;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;border:0;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:22px;cursor:pointer;transition:background .2s,opacity .2s}
+.wsBrowseButton:hover,.wsBrowseButton:focus-visible{background:rgba(0,0,0,.75)}
+.wsBrowseButton[hidden]{display:none}
+.wsBrowsePrev{left:16px}
+.wsBrowseNext{right:16px}
+.wsPhotoStripWrap .wsBrowseButton{width:40px;height:40px;font-size:18px}
+.wsPhotoStripWrap .wsBrowsePrev{left:8px}
+.wsPhotoStripWrap .wsBrowseNext{right:8px}
+#rwPropertyDetailMoreImagesButton.wsHidden{display:none!important}
+#rwPropertyDetail .rwSlideshow{padding:0}
+html:not(.aimee-open) body.wsAimeeOverPhotos #aimee-launcher,html:not(.aimee-open) body.wsAimeeOverPhotos #aimee-nudge,html:not(.aimee-open) body:has(#rwPropertyDetail .rwSlideshow.rwShow) #aimee-launcher,html:not(.aimee-open) body:has(#rwPropertyDetail .rwSlideshow.rwShow) #aimee-nudge{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s}
+#rwPropertyDetail .rwSlideshow .rwCarousel .rwCarouselPrev:before,#rwPropertyDetail .rwSlideshow .rwCarousel .rwCarouselNext:before,#rwPropertyDetail .rwSlideshow .rwCarousel .rwTimes:after{text-shadow:0 0 8px rgba(0,0,0,.8)}
+#rwPropertyDetail .rwSlideshow .rwCarousel .rwCarouselInner .rwCarouselItem img{width:100%;height:100%;max-width:none;max-height:none;object-fit:contain}
+/* wsActionsRow: the action icons float over the main photo in a see-through panel on the left; on phones they sit in a row under it */
+#rwPropertyDetail .rwIntro.wsHeroFramed{display:block;position:relative;height:auto;min-height:0;max-height:none}
+#rwPropertyDetail .rwIntro .wsHeroPhoto{position:relative;overflow:hidden}
+#rwPropertyDetail .rwIntro .wsHeroPhoto>img{position:static;display:block;transform:none;width:100%;height:45vw;min-height:400px;max-height:90vh;object-fit:cover}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions{position:absolute;z-index:6;left:20px;top:calc(50% + 30px);bottom:auto;transform:translateY(-50%);width:84px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:10px 4px;border:0;border-radius:12px;background:rgba(20,18,15,.42);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span{margin:0;padding:4px;color:#fff;font-size:11px;line-height:1.3;white-space:nowrap;border-radius:6px;text-shadow:0 1px 3px rgba(0,0,0,.4);transition:background .2s}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a:hover,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span:hover{background:rgba(255,255,255,.14)}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a:before,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span:before{font-size:20px;line-height:24px;margin-bottom:2px}
+#rwPropertyDetail .rwIntro .wsHeroPhoto .wsBrowsePrev{left:122px}
+@media (min-width:576px) and (max-width:1299.98px),(min-width:576px) and (max-height:700px){
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions{top:auto;bottom:16px;transform:none;width:52px;padding:6px 4px}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span{padding:5px 0}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a>span,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a:before,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span:before{margin-bottom:0}
+#rwPropertyDetail .rwIntro .wsHeroPhoto .wsBrowsePrev{left:88px}}
+@media (max-width:991.98px){#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a{width:calc((100% - 2*6px)/3)}}
+@media (max-width:575.98px){#rwPropertyDetail #rwPropertyDetailImageGallery.wsPhotoStrip>a{width:40%}.wsBrowseButton{display:none!important}
+#rwPropertyDetail .rwIntro .wsHeroPhoto>img{height:auto;min-height:0;max-height:none;aspect-ratio:3/2}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions{position:static;transform:none;width:auto;flex-direction:row;justify-content:space-between;gap:0;padding:8px 4px;border-radius:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;border-bottom:1px solid rgba(0,0,0,.1)}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span{flex:1 1 0;min-width:0;padding:0;font-size:10px;color:#222;text-shadow:none}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a:hover,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span:hover{background:rgba(0,0,0,.05)}
+#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>a:before,#rwPropertyDetail .rwIntro.wsHeroFramed .rwQuickActions>span:before{font-size:18px;line-height:22px;margin-bottom:2px}
+#rwPropertyDetail .rwIntro .wsPhotoCounter{right:8px;top:8px;font-size:12px;padding:2px 7px}}

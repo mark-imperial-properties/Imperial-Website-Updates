@@ -1,0 +1,25 @@
+{
+  "_api": {
+    "origin": "44840e1891b9509a52c739e68c104369",
+    "website": "66197cc090c64950e0663a22d87be349",
+    "note": "The session id is private: give it in the chat, never commit it."
+  },
+  "styleSheet": {
+    "id": "8a7fc6482b0c63d616e03a22d8a81af5",
+    "file": "articles/styleSheet.css",
+    "fields": {
+      "type": 23,
+      "name": "CSS",
+      "publish": true
+    }
+  },
+  "exposePhotoStrip": {
+    "id": "02ecbf04645da427f38d3a251ef523f3",
+    "file": "articles/exposePhotoStrip.html",
+    "fields": {
+      "type": 8,
+      "name": "Expose photo strip",
+      "publish": true
+    }
+  }
+}
