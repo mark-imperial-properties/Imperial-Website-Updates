@@ -28,7 +28,7 @@ The fade-out of Ask Aimée depends on the widget's `#aimee-launcher`, `#aimee-nu
 
 ## Brochures (November 2026)
 
-[/en/brochures](https://www.imperial-properties.com/en/brochures) lists the flipbook brochures, one card each (cover, place, facts, "Open brochure", "View the property"). It is not in the menu yet; the brochures themselves keep their own `noindex`.
+[/en/brochures](https://www.imperial-properties.com/en/brochures) lists the flipbook brochures, one card each (cover, place, facts, "Open brochure", "View the property"). It is the last item in the Buy menu (English); the brochures themselves keep their own `noindex`.
 
 | Brochure | Page | Article id |
 |---|---|---|

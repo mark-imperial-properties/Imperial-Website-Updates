@@ -63,12 +63,14 @@
       "name": "Brochures",
       "language": "en",
       "location": "/en/brochures",
-      "navigation": false,
+      "navigation": true,
       "robots": true,
       "publish": true,
       "title": "Property Brochures: Exclusive Homes in South West Mallorca",
       "description": "Turn the pages of our brochures for selected exclusive homes in South West Mallorca, with photographs, floor areas, the location and 3D tours.",
-      "contentId": "3bb83a836e8ef7e3b8323a252fdc565a"
+      "contentId": "3bb83a836e8ef7e3b8323a252fdc565a",
+      "parentId": "56c74bcd074769c81b213a22d8a51cc8",
+      "ordinal": 5
     }
   }
 }
