@@ -28,7 +28,17 @@ The fade-out of Ask Aimée depends on the widget's `#aimee-launcher`, `#aimee-nu
 
 ## Brochures (November 2026)
 
-[/en/brochures](https://www.imperial-properties.com/en/brochures) lists the flipbook brochures, one card each (cover, place, facts, "Open brochure", "View the property"). It is the last item in the Buy menu (English); the brochures themselves keep their own `noindex`.
+[/en/brochures](https://www.imperial-properties.com/en/brochures) lists the flipbook brochures, one card each (cover, place, facts, "Open brochure", "View the property"). It is the last item in the Buy menu in all five languages; the brochures themselves are in English and keep their own `noindex`.
+
+| Language | Page | Article id |
+|---|---|---|
+| English | [/en/brochures](https://www.imperial-properties.com/en/brochures) | `3bb83a836e8ef7e3b8323a252fdc565a` |
+| Spanish | [/es/folletos](https://www.imperial-properties.com/es/folletos) | `b3f34c6d9c6a61750f243a252fe5f372` |
+| German | [/de/broschueren](https://www.imperial-properties.com/de/broschueren) | `72ccb2fc9583d6c25c6d3a252fe5f46c` |
+| French | [/fr/brochures](https://www.imperial-properties.com/fr/brochures) | `888878e11028980fc5773a252fe5f52a` |
+| Russian | [/ru/broshyury](https://www.imperial-properties.com/ru/broshyury) | `0046f926128fb50e31023a252fe5f5e7` |
+
+The five pages share the English page's contentId, so each lists the others as language versions. They are written by `tools/brochures_pages.py` from one list of brochures and the wording for each language.
 
 | Brochure | Page | Article id |
 |---|---|---|
@@ -36,7 +46,7 @@ The fade-out of Ask Aimée depends on the widget's `#aimee-launcher`, `#aimee-nu
 | IP2-10322 Frontline Villa, Sol de Mallorca | [/brochures/ip2-10322.html](https://www.imperial-properties.com/brochures/ip2-10322.html) | `38a7207d6ee4fe97f18b3a252fd7ec79` |
 | IP2-10886 Garden Apartment, Nova Santa Ponsa | [/brochures/ip2-10886.html](https://www.imperial-properties.com/brochures/ip2-10886.html) | `af9749324be72b13e6a73a252fd7ea36` |
 
-The section page is `articles/brochures.en.html` (a Page, id `3bb83a836e8ef7e3b8323a252fdc565a`); its card styles are the "Brochures page" block in the style sheet, also in `articles/styleSheet-brochures-block.css`.
+The section pages are `articles/brochures.<lang>.html`; their card styles are the "Brochures page" block in the style sheet, also in `articles/styleSheet-brochures-block.css`.
 
 A website article holds at most about 256,000 characters, and a brochure with its photos and fonts embedded is 1.5 to 6 MB. So each brochure is published as a StandaloneHtmlDocument (type 26) of about 100,000 characters, and its photos and fonts are files on the CDN (`brochure-<ref>-…`):
 
@@ -46,7 +56,7 @@ python3 tools/split_brochure.py brochures/ip2-10886.html ip2-10886 https://media
 
 writes `build/<ref>/page.html` (the article body) and `build/<ref>/files/` (upload each with `POST websites/documents?name=…`). The originals stay in `brochures/`, the card covers in `brochures/covers/`. Each published brochure was checked pixel-identical to its original after four page turns.
 
-To add a brochure: split it, upload its files, create the type 26 article at `/brochures/<ref>.html`, photograph its cover for the card, and add a card to `articles/brochures.en.html`.
+To add a brochure: split it, upload its files, create the type 26 article at `/brochures/<ref>.html`, photograph its cover for the card, add it and its wording in each language to `tools/brochures_pages.py`, run it, and update the five pages.
 
 ## Publishing
 

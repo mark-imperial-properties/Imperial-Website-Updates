@@ -72,5 +72,77 @@
       "parentId": "56c74bcd074769c81b213a22d8a51cc8",
       "ordinal": 5
     }
+  },
+  "brochures.es": {
+    "id": "b3f34c6d9c6a61750f243a252fe5f372",
+    "file": "articles/brochures.es.html",
+    "fields": {
+      "type": 5,
+      "language": "es",
+      "navigation": true,
+      "ordinal": 5,
+      "robots": true,
+      "publish": true,
+      "contentId": "3bb83a836e8ef7e3b8323a252fdc565a",
+      "name": "Folletos",
+      "location": "/es/folletos",
+      "parentId": "ea839a67daec4e6ddd5c3a248fb3bf4b",
+      "title": "Folletos de propiedades: viviendas exclusivas en el suroeste de Mallorca",
+      "description": "Hojee nuestros folletos de viviendas exclusivas seleccionadas en el suroeste de Mallorca, con fotografías, superficies, la ubicación y recorridos 3D."
+    }
+  },
+  "brochures.de": {
+    "id": "72ccb2fc9583d6c25c6d3a252fe5f46c",
+    "file": "articles/brochures.de.html",
+    "fields": {
+      "type": 5,
+      "language": "de",
+      "navigation": true,
+      "ordinal": 5,
+      "robots": true,
+      "publish": true,
+      "contentId": "3bb83a836e8ef7e3b8323a252fdc565a",
+      "name": "Broschüren",
+      "location": "/de/broschueren",
+      "parentId": "39c9dd50d5a3b90e11f83a248ffe57eb",
+      "title": "Immobilien-Broschüren: Exklusive Immobilien im Südwesten Mallorcas",
+      "description": "Blättern Sie durch unsere Broschüren zu ausgewählten exklusiven Immobilien im Südwesten Mallorcas, mit Fotos, Flächenangaben, der Lage und 3D-Rundgängen."
+    }
+  },
+  "brochures.fr": {
+    "id": "888878e11028980fc5773a252fe5f52a",
+    "file": "articles/brochures.fr.html",
+    "fields": {
+      "type": 5,
+      "language": "fr",
+      "navigation": true,
+      "ordinal": 5,
+      "robots": true,
+      "publish": true,
+      "contentId": "3bb83a836e8ef7e3b8323a252fdc565a",
+      "name": "Brochures",
+      "location": "/fr/brochures",
+      "parentId": "00c6f0cbd6c4bbeb639d3a248ffe7bbf",
+      "title": "Brochures immobilières : biens d'exception dans le sud-ouest de Majorque",
+      "description": "Feuilletez nos brochures consacrées à une sélection de biens d'exception dans le sud-ouest de Majorque, avec photos, surfaces, emplacement et visites virtuelles en 3D."
+    }
+  },
+  "brochures.ru": {
+    "id": "0046f926128fb50e31023a252fe5f5e7",
+    "file": "articles/brochures.ru.html",
+    "fields": {
+      "type": 5,
+      "language": "ru",
+      "navigation": true,
+      "ordinal": 5,
+      "robots": true,
+      "publish": true,
+      "contentId": "3bb83a836e8ef7e3b8323a252fdc565a",
+      "name": "Брошюры",
+      "location": "/ru/broshyury",
+      "parentId": "169f6111ad8ed0bf02313a2490e54649",
+      "title": "Брошюры объектов: эксклюзивная недвижимость на юго-западе Майорки",
+      "description": "Листайте наши брошюры избранной эксклюзивной недвижимости на юго-западе Майорки: фотографии, площади, расположение и 3D-туры."
+    }
   }
 }
