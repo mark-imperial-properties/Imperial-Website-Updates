@@ -21,5 +21,54 @@
       "name": "Expose photo strip",
       "publish": true
     }
+  },
+  "brochure10886": {
+    "id": "af9749324be72b13e6a73a252fd7ea36",
+    "file": "build/ip2-10886/page.html",
+    "source": "brochures/ip2-10886.html",
+    "fields": {
+      "type": 26,
+      "name": "Brochure · Garden Apartment · Nova Santa Ponsa · IP2-10886",
+      "location": "/brochures/ip2-10886.html",
+      "publish": true
+    }
+  },
+  "brochure10322": {
+    "id": "38a7207d6ee4fe97f18b3a252fd7ec79",
+    "file": "build/ip2-10322/page.html",
+    "source": "brochures/ip2-10322.html",
+    "fields": {
+      "type": 26,
+      "name": "Brochure · Frontline Villa · Sol de Mallorca · IP2-10322",
+      "location": "/brochures/ip2-10322.html",
+      "publish": true
+    }
+  },
+  "brochure10337": {
+    "id": "cbb81705856be77a269a3a252fd7ed8f",
+    "file": "build/ip2-10337/page.html",
+    "source": "brochures/ip2-10337.html",
+    "fields": {
+      "type": 26,
+      "name": "Brochure · Three Villas Above Port Andratx · Port d'Andratx · IP2-10337",
+      "location": "/brochures/ip2-10337.html",
+      "publish": true
+    }
+  },
+  "brochures.en": {
+    "id": "3bb83a836e8ef7e3b8323a252fdc565a",
+    "file": "articles/brochures.en.html",
+    "fields": {
+      "type": 5,
+      "name": "Brochures",
+      "language": "en",
+      "location": "/en/brochures",
+      "navigation": false,
+      "robots": true,
+      "publish": true,
+      "title": "Property Brochures: Exclusive Homes in South West Mallorca",
+      "description": "Turn the pages of our brochures for selected exclusive homes in South West Mallorca, with photographs, floor areas, the location and 3D tours.",
+      "contentId": "3bb83a836e8ef7e3b8323a252fdc565a"
+    }
   }
 }

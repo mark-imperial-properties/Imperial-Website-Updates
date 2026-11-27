@@ -1,0 +1,16 @@
+/* Brochures page (/en/brochures): a card per flipbook brochure */
+.wsBrochureGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem 2.25rem;padding:1rem 0 2rem}
+.wsBrochureCard{display:flex;flex-direction:column;align-items:flex-start}
+.wsBrochureCover{display:block;width:100%;aspect-ratio:811/1147;overflow:hidden;background:var(--warm);box-shadow:0 2px 6px rgba(26,24,21,.08),0 14px 34px rgba(26,24,21,.14);transition:transform .35s ease,box-shadow .35s ease}
+.wsBrochureCover img{display:block;width:100%;height:100%;object-fit:cover}
+.wsBrochureCover:hover,.wsBrochureCover:focus-visible{transform:translateY(-6px);box-shadow:0 4px 10px rgba(26,24,21,.1),0 22px 44px rgba(26,24,21,.2)}
+.wsBrochureWhere{margin-top:1.5rem;font-family:var(--label);font-size:var(--t-xs);font-weight:500;letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--gold2)}
+.wsBrochureCard h2{margin:.5rem 0 .4rem;font-family:var(--serif);font-size:var(--t-xl);font-weight:400;line-height:1.2}
+.wsBrochureCard h2 a{color:var(--dark);text-decoration:none}
+.wsBrochureCard h2 a:hover{color:var(--gold2)}
+.wsBrochureFacts{margin:0 0 1.25rem;font-family:var(--sans);font-size:var(--t-sm);color:var(--sub)}
+.wsBrochureLinks{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;margin:auto 0 0}
+.wsBrochureProperty{font-family:var(--label);font-size:var(--t-xs);font-weight:500;letter-spacing:var(--ls-normal);text-transform:uppercase;color:var(--dark);text-decoration:none;border-bottom:1px solid var(--gold)}
+.wsBrochureProperty:hover{color:var(--gold2)}
+@media (max-width:991.98px){.wsBrochureGrid{grid-template-columns:repeat(2,1fr);gap:2.5rem 1.75rem}}
+@media (max-width:575.98px){.wsBrochureGrid{grid-template-columns:1fr;gap:2.75rem}.wsBrochureCover{max-width:380px}}

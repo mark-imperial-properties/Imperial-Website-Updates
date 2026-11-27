@@ -26,6 +26,28 @@ To switch the whole layout off, unpublish the "Expose photo strip" fragment: the
 
 The fade-out of Ask Aimée depends on the widget's `#aimee-launcher`, `#aimee-nudge` and the `aimee-open` class on `<html>`. If the widget renames them, the fade stops and Aimée simply stays visible.
 
+## Brochures (November 2026)
+
+[/en/brochures](https://www.imperial-properties.com/en/brochures) lists the flipbook brochures, one card each (cover, place, facts, "Open brochure", "View the property"). It is not in the menu yet; the brochures themselves keep their own `noindex`.
+
+| Brochure | Page | Article id |
+|---|---|---|
+| IP2-10337 Three Villas Above Port Andratx | [/brochures/ip2-10337.html](https://www.imperial-properties.com/brochures/ip2-10337.html) | `cbb81705856be77a269a3a252fd7ed8f` |
+| IP2-10322 Frontline Villa, Sol de Mallorca | [/brochures/ip2-10322.html](https://www.imperial-properties.com/brochures/ip2-10322.html) | `38a7207d6ee4fe97f18b3a252fd7ec79` |
+| IP2-10886 Garden Apartment, Nova Santa Ponsa | [/brochures/ip2-10886.html](https://www.imperial-properties.com/brochures/ip2-10886.html) | `af9749324be72b13e6a73a252fd7ea36` |
+
+The section page is `articles/brochures.en.html` (a Page, id `3bb83a836e8ef7e3b8323a252fdc565a`); its card styles are the "Brochures page" block in the style sheet, also in `articles/styleSheet-brochures-block.css`.
+
+A website article holds at most about 256,000 characters, and a brochure with its photos and fonts embedded is 1.5 to 6 MB. So each brochure is published as a StandaloneHtmlDocument (type 26) of about 100,000 characters, and its photos and fonts are files on the CDN (`brochure-<ref>-…`):
+
+```
+python3 tools/split_brochure.py brochures/ip2-10886.html ip2-10886 https://media.realtyware.net/origins/44840e1891b9509a52c739e68c104369/documents
+```
+
+writes `build/<ref>/page.html` (the article body) and `build/<ref>/files/` (upload each with `POST websites/documents?name=…`). The originals stay in `brochures/`, the card covers in `brochures/covers/`. Each published brochure was checked pixel-identical to its original after four page turns.
+
+To add a brochure: split it, upload its files, create the type 26 article at `/brochures/<ref>.html`, photograph its cover for the card, and add a card to `articles/brochures.en.html`.
+
 ## Publishing
 
 ```
